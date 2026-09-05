@@ -3,9 +3,9 @@
   "short_name": "Vademécum Bolivia",
   "description": "Consulta clínica de medicamentos, insumos, implantes, proveedores, interacciones y dosis pediátrica en Bolivia.",
   "lang": "es-BO",
-  "id": "./",
-  "start_url": "./index.html",
-  "scope": "./",
+  "id": "/",
+  "start_url": "/?pwa=1",
+  "scope": "/",
   "display": "standalone",
   "display_override": [
     "standalone",
@@ -21,16 +21,22 @@
   ],
   "icons": [
     {
-      "src": "./icons/icon-192.png",
+      "src": "/icons/icon-192-v0192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "./icons/icon-512.png",
+      "src": "/icons/icon-512-v0192.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512-v0192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

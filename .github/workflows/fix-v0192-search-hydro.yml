@@ -1,0 +1,149 @@
+name: Corregir PWA 0.19.2 búsqueda hidrocefalia icono HTTPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-v0192-search-hydro.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar correcciones v0.19.2
+        shell: python
+        run: |
+          from pathlib import Path
+          import json, re
+          root=Path('docs')
+
+          # ---------- app.js: búsqueda clínica tolerante ----------
+          p=root/'app.js'
+          s=p.read_text(encoding='utf-8')
+          s=re.sub(r"const APP_VERSION='[^']+'", "const APP_VERSION='0.19.2'", s, count=1)
+          s=s.replace("function boliviaSupplies(){return(window.VCB_SUPPLIES||[]).filter(x=>x.verificacion_bolivia===true&&x.visible_publico_bolivia!==false)}",
+                      "function boliviaSupplies(){return(window.VCB_SUPPLIES||[]).filter(x=>(x.verificacion_bolivia===true||x.reportado_usuario===true)&&x.visible_publico_bolivia!==false)}")
+          old="function wordTokens(s){return norm(s).split(/[^a-z0-9]+/).filter(Boolean)}"
+          new="const QUERY_STOP=new Set(['mas','con','y','combinado','combinada','asociacion','asociado','asociada']);function wordTokens(s){return norm(s).split(/[^a-z0-9]+/).filter(Boolean)}function queryTokens(s){let route={ev:'intravenosa',iv:'intravenosa',endovenoso:'intravenosa',endovenosa:'intravenosa',intravenoso:'intravenosa',intravenosa:'intravenosa'};return wordTokens(s).map(t=>route[t]||t).filter(t=>!QUERY_STOP.has(t))}"
+          if old in s: s=s.replace(old,new)
+          old="function medSearchFields(x){let f=[x.marca,x.dci,...principles(x),...(x.aliases||[]),x.laboratorio,...(x.presentaciones||[])].filter(Boolean);let s=searchable(x);if(/valproato|acido valproico/.test(s))f.push('acido valproico','valproato de sodio');if(/paracetamol|acetaminofen/.test(s))f.push('paracetamol','acetaminofen');if(/metamizol|dipirona/.test(s))f.push('metamizol','dipirona');if(/laiden/.test(s))f.push('layden');return f}"
+          new="function medSearchFields(x){let f=[x.marca,x.dci,...principles(x),...(x.aliases||[]),x.laboratorio,...(x.presentaciones||[])].filter(Boolean);let s=searchable(x);if(/valproato|acido valproico/.test(s))f.push('acido valproico','valproato de sodio');if(/paracetamol|acetaminofen/.test(s))f.push('paracetamol','acetaminofen');if(/metamizol|dipirona/.test(s))f.push('metamizol','dipirona');if(/laiden/.test(s))f.push('layden');if(/(^|[^a-z])(iv|i v)([^a-z]|$)|intravenos|endovenos|inyectable iv/.test(s))f.push('intravenosa','intravenoso','endovenoso','endovenosa','iv','ev','parenteral');return f}"
+          if old in s: s=s.replace(old,new)
+          s=s.replace("function prefixQueryMatch(fields,q){let qt=wordTokens(q);if(!qt.length)return false;let fw=fields.flatMap(wordTokens);return qt.every(t=>fw.some(w=>w===t||w.startsWith(t)))}",
+                      "function prefixQueryMatch(fields,q){let qt=queryTokens(q);if(!qt.length)return false;let fw=fields.flatMap(wordTokens);return qt.every(t=>fw.some(w=>w===t||w.startsWith(t)))}")
+          s=s.replace("function fieldRank(field,q){let n=norm(field),nq=norm(q);if(!n)return 0;if(n===nq)return 1200;if(n.startsWith(nq))return 1000;let ws=wordTokens(n),qt=wordTokens(nq);if(qt.length&&qt.every(t=>ws.some(w=>w===t)))return 900;if(qt.length&&qt.every(t=>ws.some(w=>w.startsWith(t))))return 700;return 0}",
+                      "function fieldRank(field,q){let n=norm(field),nq=norm(q);if(!n)return 0;if(n===nq)return 1200;if(n.startsWith(nq))return 1000;let ws=wordTokens(n),qt=queryTokens(nq);if(qt.length&&qt.every(t=>ws.some(w=>w===t)))return 900;if(qt.length&&qt.every(t=>ws.some(w=>w.startsWith(t))))return 700;return 0}")
+          s=re.sub(r"navigator\.serviceWorker\.register\([^\n]+?\)\}\);$",
+                   "navigator.serviceWorker.register('/sw.js?v=0.19.2',{scope:'/'}).catch(e=>console.warn('Service worker:',e))});", s)
+          s=s.replace("if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(e=>console.warn('Service worker:',e))",
+                      "if('serviceWorker'in navigator&&(location.protocol==='https:'||['localhost','127.0.0.1'].includes(location.hostname)))navigator.serviceWorker.register('/sw.js?v=0.19.2',{scope:'/'}).catch(e=>console.warn('Service worker:',e))")
+          p.write_text(s,encoding='utf-8')
+
+          # ---------- supplies.js: ADA / INSUMEDIC / HPBio ----------
+          p=root/'data/supplies.js'
+          raw=p.read_text(encoding='utf-8')
+          prefix='window.VCB_SUPPLIES = '
+          rows=json.loads(raw[len(prefix):].rstrip(';\n '))
+          byid={x.get('id'):x for x in rows}
+          ins=byid.get('bol-v170-proveedor-insumedic-srl')
+          if ins:
+            ins['fabricante']='Representaciones múltiples · Canwell / Macom / HPBio y otras líneas según catálogo'
+            ins['presentaciones']=['Implantes de columna Canwell','CranioFix y neurocirugía','HPBio: sistemas de hidrocefalia DVP y DVE','Vertebroplastia/cifoplastia y kits quirúrgicos']
+            for a in ['hidrocefalia','dvp','dve','drenaje ventricular externo','derivacion ventriculoperitoneal','shunt','hpbio bolivia']:
+              if a not in ins.setdefault('familias',[]): ins['familias'].append(a)
+            for a in ['hpbio','dvp insumedic','dve insumedic']:
+              if a not in ins.setdefault('aliases',[]): ins['aliases'].append(a)
+            ins['telefonos']=['+591 72146428','+591 71346498','+591 71632529']
+            if ins.get('contactos_departamento'): ins['contactos_departamento'][0]['telefonos']=ins['telefonos']
+            ins['fuente_distribucion_hpbio']='https://hpbio.com.br/contato/'
+            ins['estado_bolivia']='Empresa boliviana y catálogo local confirmados. HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia. El DI individual se mantiene pendiente hasta conciliación AGEMED.'
+
+          adafam=byid.get('bol-v120-ada-hpbio-hidrocefalia')
+          if adafam:
+            adafam['marca']='ADA Bolivia · Hidrocefalia / DVP'
+            adafam['nombre']='Familia de catéteres ventriculares, peritoneales/auriculares, conectores y reservorios'
+            adafam['fabricante']='Línea(s) de hidrocefalia según disponibilidad del proveedor'
+            adafam['aliases']=['ada hidrocefalia','dvp','derivacion ventriculoperitoneal','derivación ventriculoperitoneal','shunt','cateter ventricular','catéter ventricular','cateter peritoneal','reservorio']
+            adafam['estado_bolivia']='ADA publica en Bolivia catéteres ventriculares, peritoneales y auriculares, conectores y reservorios. Confirmar marca, modelo, configuración y DI al cotizar.'
+            adafam['nivel_evidencia']='catalogo_proveedor_bolivia'
+
+          for x in rows:
+            if x.get('fabricante')=='HPBio' and x.get('proveedor_bolivia')=='ADA Bolivia Import-Export' and x.get('id')!='bol-v120-ada-hpbio-hidrocefalia':
+              x['proveedor_bolivia']='INSUMEDIC S.R.L.'
+              x['proveedor_id']='bol-v170-proveedor-insumedic-srl'
+              x['fuente_bolivia']='https://hpbio.com.br/contato/'
+              x['estado_bolivia']='HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.'
+              x['fecha_verificacion_bolivia']='2026-09-05'
+              x['nivel_evidencia']='fabricante_oficial_mas_distribuidor_bolivia'
+              x['validacion_agemed']='registro_DI_especifico_pendiente_de_conciliacion'
+              if 'insumedic' not in x.setdefault('aliases',[]): x['aliases'].append('insumedic')
+
+          nuevos=[
+            {'id':'bol-v192-insumedic-hpbio-dve-free-flow','tipo_registro':'insumo','grupo_catalogo':'insumo','marca':'HPBio DVE Free Flow','nombre':'Sistema de drenaje ventricular externo Free Flow','fabricante':'HPBio','categoria':'Neurocirugía · DVE · drenaje ventricular externo','presentaciones':['Adulto 250 mm (DVEAF25)','Adulto 350 mm (DVEAF35)','Infantil 220/350 mm','Neonatal 220 mm','Hemorrágico 250/350 mm'],'aliases':['dve','drenaje ventricular externo','derivacion ventricular externa','derivación ventricular externa','evd','free flow','dve insumedic','hpbio dve','cateter ventricular externo'],'proveedor_bolivia':'INSUMEDIC S.R.L.','proveedor_id':'bol-v170-proveedor-insumedic-srl','telefonos':['+591 72146428','+591 71346498','+591 71632529'],'email':'generalmanager@insumedicbolivia.com','fuente_bolivia':'https://hpbio.com.br/contato/','fuente':'https://hpbio.com.br/produtos/dveff/','verificacion_bolivia':True,'visible_publico_bolivia':True,'estado_bolivia':'HPBio publica a INSUMEDIC S.R.L. como contacto para Bolivia. Producto DVE Free Flow documentado por fabricante; confirmar stock y DI exacto.','fecha_verificacion_bolivia':'2026-09-05','nivel_evidencia':'fabricante_oficial_mas_distribuidor_bolivia','validacion_agemed':'registro_DI_especifico_pendiente_de_conciliacion'},
+            {'id':'bol-v192-insumedic-hpbio-dve-economica','tipo_registro':'insumo','grupo_catalogo':'insumo','marca':'HPBio DVE Económica','nombre':'Sistema de drenaje ventricular externo económico','fabricante':'HPBio','categoria':'Neurocirugía · DVE · drenaje ventricular externo','presentaciones':['Adulto 250 mm (DVEA1-EC)','Adulto 350 mm (DVEA2-EC)','Neonatal 220 mm (DVEN-EC)'],'aliases':['dve','drenaje ventricular externo','derivacion ventricular externa','derivación ventricular externa','evd','dve economica','dve económica','dve insumedic','hpbio dve'],'proveedor_bolivia':'INSUMEDIC S.R.L.','proveedor_id':'bol-v170-proveedor-insumedic-srl','telefonos':['+591 72146428','+591 71346498','+591 71632529'],'email':'generalmanager@insumedicbolivia.com','fuente_bolivia':'https://hpbio.com.br/contato/','fuente':'https://hpbio.com.br/produtos/dve-economica/','verificacion_bolivia':True,'visible_publico_bolivia':True,'estado_bolivia':'HPBio publica a INSUMEDIC S.R.L. como contacto para Bolivia. Producto DVE Económica documentado por fabricante; confirmar stock y DI exacto.','fecha_verificacion_bolivia':'2026-09-05','nivel_evidencia':'fabricante_oficial_mas_distribuidor_bolivia','validacion_agemed':'registro_DI_especifico_pendiente_de_conciliacion'},
+            {'id':'bol-v192-ada-dve-reportado','tipo_registro':'insumo','grupo_catalogo':'insumo','marca':'ADA Bolivia · DVE','nombre':'Drenaje ventricular externo · disponibilidad reportada','fabricante':'Marca/modelo por confirmar con proveedor','categoria':'Neurocirugía · DVE · disponibilidad reportada','presentaciones':['DVE · marca, modelo y configuración por confirmar directamente con ADA Bolivia'],'aliases':['ada dve','dve','drenaje ventricular externo','derivacion ventricular externa','derivación ventricular externa','cateter ventricular externo'],'proveedor_bolivia':'ADA Bolivia Import-Export','proveedor_id':'bol-proveedor-ada-bolivia','telefonos':['+591 2 2311508'],'whatsapp':'+591 72049362','email':'info@adabolivia.com','fuente_bolivia':'https://www.adabolivia.com/','reportado_usuario':True,'verificacion_bolivia':False,'visible_publico_bolivia':True,'estado_bolivia':'Disponibilidad de DVE reportada por usuaria. ADA publica una línea de neurología/hidrocefalia, pero la marca/modelo DVE y el DI específico aún requieren confirmación documental directa.','fecha_verificacion_bolivia':'2026-09-05','nivel_evidencia':'aporte_usuario_pendiente','validacion_agemed':'pendiente_de_confirmar_modelo_y_registro_DI'}
+          ]
+          ids={x.get('id') for x in rows}
+          for n in nuevos:
+            if n['id'] not in ids: rows.append(n)
+          ada=byid.get('bol-proveedor-ada-bolivia')
+          if ada:
+            for a in ['dvp','derivacion ventriculoperitoneal','shunt','dve','drenaje ventricular externo']:
+              if a not in ada.setdefault('familias',[]): ada['familias'].append(a)
+            for a in ['ada dvp','ada dve']:
+              if a not in ada.setdefault('aliases',[]): ada['aliases'].append(a)
+            if not any('DVE:' in z for z in ada.get('presentaciones',[])): ada.setdefault('presentaciones',[]).append('DVE: disponibilidad reportada; marca/modelo/DI pendiente de confirmación documental')
+          p.write_text(prefix+json.dumps(rows,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
+
+          # ---------- manifest / index / service worker / config ----------
+          manifest={'name':'Vademécum Clínico Bolivia','short_name':'Vademécum Bolivia','description':'Consulta clínica de medicamentos, insumos, implantes, proveedores, interacciones y dosis pediátrica en Bolivia.','lang':'es-BO','id':'/','start_url':'/?pwa=1','scope':'/','display':'standalone','display_override':['standalone','minimal-ui'],'orientation':'any','background_color':'#051c39','theme_color':'#102742','categories':['medical','health','utilities'],'icons':[{'src':'/icons/icon-192.png?v=0.19.2','sizes':'192x192','type':'image/png','purpose':'any'},{'src':'/icons/icon-512.png?v=0.19.2','sizes':'512x512','type':'image/png','purpose':'any'}]}
+          (root/'manifest.webmanifest').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          idx=(root/'index.html').read_text(encoding='utf-8')
+          if 'Content-Security-Policy' not in idx:
+            idx=idx.replace('<title>Vademécum Clínico Bolivia</title>', '<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><script>if(location.protocol===\'http:\'&&!['+'\'localhost\',\'127.0.0.1\''+'].includes(location.hostname)){location.replace(\'https://\'+location.host+location.pathname+location.search+location.hash)}</script><title>Vademécum Clínico Bolivia</title>')
+          idx=re.sub(r'<link rel="manifest"[^>]*>', '<link rel="manifest" href="/manifest.webmanifest?v=0.19.2">', idx)
+          idx=re.sub(r'<link rel="icon"[^>]*>', '<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png?v=0.19.2">', idx)
+          if 'apple-touch-icon' in idx: idx=re.sub(r'<link rel="apple-touch-icon"[^>]*>', '<link rel="apple-touch-icon" href="/icons/icon-192.png?v=0.19.2">', idx)
+          else: idx=idx.replace('</head>','<link rel="apple-touch-icon" href="/icons/icon-192.png?v=0.19.2"></head>')
+          idx=idx.replace('src="./icons/icon-192.png"','src="/icons/icon-192.png?v=0.19.2"').replace('src="/icons/icon-192-v0192.png"','src="/icons/icon-192.png?v=0.19.2"')
+          idx=idx.replace('Aplicación 0.19.1','Aplicación 0.19.2').replace('Aplicación 0.19.0','Aplicación 0.19.2')
+          idx=idx.replace('61 implantes</b> neuroquirúrgicos/columna por familia. 69 insumos/equipos','61 implantes</b> neuroquirúrgicos/columna por familia. 72 insumos/equipos')
+          idx=idx.replace('<script src="./app.js"></script>','<script src="./app.js?v=0.19.2"></script>')
+          (root/'index.html').write_text(idx,encoding='utf-8')
+          (root/'config.js').write_text("window.VCB_CONFIG={\n  appVersion:'0.19.2',\n  bundledCatalogVersion:'0.19.0',\n  updateManifestUrl:'./data/catalog-version.json',\n  syncIntervalMs:86400000,\n  minimumCatalogCount:2782\n};\n",encoding='utf-8')
+          sw="""const CACHE_NAME='vcb-shell-0.19.2';
+          const PRECACHE=['/','/index.html','/styles.css','/app.js?v=0.19.2','/config.js','/manifest.webmanifest?v=0.19.2','/icons/icon-192.png?v=0.19.2','/icons/icon-512.png?v=0.19.2','/data/seed.js','/data/supplies.js','/data/spine_miss.js','/data/spine_approaches.js','/data/pediatric_guides.js','/data/interactions.js','/data/regulatory_exclusions.js','/data/regulatory_alerts.js','/data/catalog-version.json','/data/catalogo_medicamentos_v0.19.0.json'];
+          self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(PRECACHE)).then(()=>self.skipWaiting()))});
+          self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+          function isVersionedData(url){return url.pathname.endsWith('/data/catalog-version.json')||url.pathname.includes('/data/catalogo_medicamentos_')}
+          self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;let url=new URL(event.request.url);if(url.origin!==self.location.origin)return;if(isVersionedData(url)){event.respondWith(fetch(event.request,{cache:'no-store'}).then(r=>{let copy=r.clone();caches.open(CACHE_NAME).then(c=>c.put(event.request,copy));return r}).catch(()=>caches.match(event.request)));return}if(event.request.mode==='navigate'){event.respondWith(fetch(event.request).then(r=>{let copy=r.clone();caches.open(CACHE_NAME).then(c=>c.put('/index.html',copy));return r}).catch(()=>caches.match('/index.html')));return}event.respondWith(caches.match(event.request).then(hit=>hit||fetch(event.request).then(r=>{if(r&&r.ok){let copy=r.clone();caches.open(CACHE_NAME).then(c=>c.put(event.request,copy))}return r}))) });
+          """.replace('          ','')
+          (root/'sw.js').write_text(sw,encoding='utf-8')
+          (root/'PWA_SECURITY_v0.19.2.txt').write_text('Vademécum Clínico Bolivia PWA 0.19.2\nBúsqueda: +, más, con; IV/EV/endovenoso/intravenoso.\nHidrocefalia: DVP/DVE ADA e INSUMEDIC con niveles de evidencia diferenciados.\nHTTPS forzado en producción y caché PWA renovada.\n',encoding='utf-8')
+          bad=root/'icons/favicon-32-v0192.png'
+          if bad.exists() and bad.stat().st_size==0: bad.unlink()
+
+      - name: Validar sintaxis y contenido
+        run: |
+          node --check docs/app.js
+          grep -q "APP_VERSION='0.19.2'" docs/app.js
+          grep -q "HPBio DVE Free Flow" docs/data/supplies.js
+          grep -q "QUERY_STOP" docs/app.js
+          grep -q "icon-192.png?v=0.19.2" docs/manifest.webmanifest
+
+      - name: Guardar actualización
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git commit -m "v0.19.2 búsqueda clínica DVP DVE icono y HTTPS"
+          git push

@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'site-v0.19.0.zip'
+      - 'Vademecum_Clinico_Bolivia_v0.19.0_PWA_NAMECHEAP.zip'
       - '.github/workflows/preparar-pwa.yml'
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
         run: |
           rm -rf docs
           mkdir -p docs
-          unzip -q site-v0.19.0.zip -d docs
+          unzip -q Vademecum_Clinico_Bolivia_v0.19.0_PWA_NAMECHEAP.zip -d docs
           touch docs/.nojekyll
 
       - name: Guardar archivos web

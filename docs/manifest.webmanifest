@@ -1,7 +1,7 @@
 {
   "name": "Vademécum Clínico Bolivia",
   "short_name": "Vademécum Bolivia",
-  "description": "Consulta local de medicamentos, insumos, interacciones y dosis pediátrica.",
+  "description": "Consulta clínica de medicamentos, insumos, implantes, proveedores, interacciones y dosis pediátrica en Bolivia.",
   "lang": "es-BO",
   "id": "./",
   "start_url": "./index.html",
@@ -12,7 +12,7 @@
     "minimal-ui"
   ],
   "orientation": "any",
-  "background_color": "#f3f7fa",
+  "background_color": "#051c39",
   "theme_color": "#102742",
   "categories": [
     "medical",

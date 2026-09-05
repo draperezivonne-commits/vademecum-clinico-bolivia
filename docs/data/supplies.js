@@ -2673,7 +2673,8 @@ window.VCB_SUPPLIES = [
       "Anestesia regional, agujas y kits",
       "Mesas, lámparas y equipos de quirófano",
       "Cardiología: válvulas y conductos",
-      "Urología y endoscopia"
+      "Urología y endoscopia",
+      "DVE: disponibilidad reportada; marca/modelo/DI pendiente de confirmación documental"
     ],
     "familias": [
       "neurocirugía",
@@ -2689,14 +2690,21 @@ window.VCB_SUPPLIES = [
       "anestesia",
       "quirófano",
       "cardiología",
-      "urología"
+      "urología",
+      "dvp",
+      "derivacion ventriculoperitoneal",
+      "shunt",
+      "dve",
+      "drenaje ventricular externo"
     ],
     "aliases": [
       "ada bolivia",
       "ada import export",
       "proveedor neurocirugia",
       "proveedor anestesia",
-      "proveedor vertebroplastia"
+      "proveedor vertebroplastia",
+      "ada dvp",
+      "ada dve"
     ],
     "proveedor_bolivia": "ADA Bolivia Import-Export",
     "telefonos": [
@@ -3012,17 +3020,22 @@ window.VCB_SUPPLIES = [
   },
   {
     "id": "bol-v120-ada-hpbio-hidrocefalia",
-    "marca": "HPBio · Hidrocefalia",
+    "marca": "ADA Bolivia · Hidrocefalia / DVP",
     "nombre": "Familia de catéteres ventriculares, peritoneales/auriculares, conectores y reservorios",
-    "fabricante": "HPBio",
+    "fabricante": "Línea(s) de hidrocefalia según disponibilidad del proveedor",
     "categoria": "Neurocirugía · hidrocefalia",
     "presentaciones": [
       "Familia de productos · modelo/medida según cotización"
     ],
     "aliases": [
-      "hpbio",
+      "ada hidrocefalia",
       "dvp",
+      "derivacion ventriculoperitoneal",
+      "derivación ventriculoperitoneal",
+      "shunt",
       "cateter ventricular",
+      "catéter ventricular",
+      "cateter peritoneal",
       "reservorio"
     ],
     "familias": [
@@ -3034,14 +3047,15 @@ window.VCB_SUPPLIES = [
     "telefonos": [],
     "fuente_bolivia": "https://adabolivia.com/",
     "verificacion_bolivia": true,
-    "estado_bolivia": "Oferta/catálogo Bolivia verificado; confirmar stock, modelo y configuración al cotizar.",
+    "estado_bolivia": "ADA publica en Bolivia catéteres ventriculares, peritoneales y auriculares, conectores y reservorios. Confirmar marca, modelo, configuración y DI al cotizar.",
     "visible_publico_bolivia": true,
     "fecha_verificacion_bolivia": "2026-09-05",
     "proveedor_id": "bol-proveedor-ada-bolivia",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / DVP",
     "tipo_registro": "implante",
-    "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion"
+    "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
+    "nivel_evidencia": "catalogo_proveedor_bolivia"
   },
   {
     "id": "bol-v120-ada-micromar-neuro",
@@ -4942,17 +4956,18 @@ window.VCB_SUPPLIES = [
       "valvula programable",
       "válvula programable",
       "dvp programable",
-      "hidrocefalia"
+      "hidrocefalia",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/sphera-pro/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / DVP"
@@ -4972,17 +4987,18 @@ window.VCB_SUPPLIES = [
       "antigravitacional",
       "antisifon",
       "anti sifon",
-      "hidrocefalia"
+      "hidrocefalia",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/sphera-pro/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / DVP"
@@ -5005,17 +5021,18 @@ window.VCB_SUPPLIES = [
       "catéter ventricular",
       "cateter cerebral",
       "dvp",
-      "shunt"
+      "shunt",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/componentes-hydrocephalus/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / componentes"
@@ -5036,17 +5053,18 @@ window.VCB_SUPPLIES = [
       "cateter peritoneal",
       "catéter peritoneal",
       "dvp distal",
-      "shunt peritoneal"
+      "shunt peritoneal",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/componentes-hydrocephalus/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / componentes"
@@ -5066,17 +5084,18 @@ window.VCB_SUPPLIES = [
       "cateter atrial",
       "catéter atrial",
       "derivacion ventriculoatrial",
-      "ventriculo atrial"
+      "ventriculo atrial",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/componentes-hydrocephalus/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / componentes"
@@ -5100,17 +5119,18 @@ window.VCB_SUPPLIES = [
       "reservorio rickham",
       "rickham",
       "rhm",
-      "rco"
+      "rco",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/componentes-hydrocephalus/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / componentes"
@@ -5131,17 +5151,18 @@ window.VCB_SUPPLIES = [
       "conector shunt",
       "conector y",
       "conector ventricular",
-      "dvp conector"
+      "dvp conector",
+      "insumedic"
     ],
-    "proveedor_bolivia": "ADA Bolivia Import-Export",
-    "proveedor_id": "bol-proveedor-ada-bolivia",
-    "fuente_bolivia": "https://www.adabolivia.com/",
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
     "fuente": "https://hpbio.com.br/produtos/componentes-hydrocephalus/",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Línea/producto documentado por proveedor o representante en Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia; confirmar stock y registro sanitario DI exacto al cotizar.",
     "fecha_verificacion_bolivia": "2026-09-05",
-    "nivel_evidencia": "catalogo_proveedor_bolivia_mas_fabricante",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
     "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion",
     "grupo_catalogo": "implante",
     "implant_family": "Hidrocefalia / componentes"
@@ -5629,11 +5650,12 @@ window.VCB_SUPPLIES = [
     "tipo_registro": "proveedor",
     "marca": "INSUMEDIC S.R.L.",
     "nombre": "Directorio Bolivia · neurocirugía, columna, implantes e insumos quirúrgicos",
-    "fabricante": "Representaciones múltiples · Canwell / Macom y otras líneas según catálogo",
+    "fabricante": "Representaciones múltiples · Canwell / Macom / HPBio y otras líneas según catálogo",
     "categoria": "Proveedores Bolivia · Neurocirugía e implantes",
     "presentaciones": [
       "Implantes de columna Canwell",
       "CranioFix y neurocirugía",
+      "HPBio: sistemas de hidrocefalia DVP y DVE",
       "Vertebroplastia/cifoplastia y kits quirúrgicos"
     ],
     "familias": [
@@ -5643,19 +5665,29 @@ window.VCB_SUPPLIES = [
       "craneoplastia",
       "neurocirugía",
       "vertebroplastia",
-      "cifoplastia"
+      "cifoplastia",
+      "hidrocefalia",
+      "dvp",
+      "dve",
+      "drenaje ventricular externo",
+      "derivacion ventriculoperitoneal",
+      "shunt",
+      "hpbio bolivia"
     ],
     "aliases": [
       "insumedic",
       "insumedic bolivia",
       "insumedic srl",
-      "canwell bolivia"
+      "canwell bolivia",
+      "hpbio",
+      "dvp insumedic",
+      "dve insumedic"
     ],
     "proveedor_bolivia": "INSUMEDIC S.R.L.",
     "telefonos": [
       "+591 72146428",
       "+591 71346498",
-      "+591 78071641"
+      "+591 71632529"
     ],
     "email": "generalmanager@insumedicbolivia.com",
     "direccion": "Av. Omar Chávez Ortiz #1265 casi esq. Francisca López, Santa Cruz de la Sierra, Bolivia",
@@ -5666,7 +5698,7 @@ window.VCB_SUPPLIES = [
         "telefonos": [
           "+591 72146428",
           "+591 71346498",
-          "+591 78071641"
+          "+591 71632529"
         ],
         "direccion": "Av. Omar Chávez Ortiz #1265 casi esq. Francisca López"
       }
@@ -5676,13 +5708,14 @@ window.VCB_SUPPLIES = [
     "nivel_evidencia": "directorio_local",
     "verificacion_bolivia": true,
     "visible_publico_bolivia": true,
-    "estado_bolivia": "Empresa boliviana y catálogo local confirmados. El DI individual de cada implante se mantiene pendiente hasta conciliación AGEMED.",
+    "estado_bolivia": "Empresa boliviana y catálogo local confirmados. HPBio publica a INSUMEDIC S.R.L. como contacto/distribuidor para Bolivia. El DI individual se mantiene pendiente hasta conciliación AGEMED.",
     "validacion_agemed": "Proveedor y producto Bolivia confirmados; registro DI específico pendiente de conciliación por referencia.",
     "fecha_verificacion_bolivia": "2026-09-05",
     "modalidad_comercial": "Comercialización/distribución de equipos e insumos médicos confirmada en Bolivia.",
     "modalidad_alquiler": "Alquiler de equipo confirmado en el catálogo: Aspirador Ultrasónico Sonoca 300, Craneótomo y Sistema Estereotáxico.",
     "nota_alif": "No se identificó ALIF en el catálogo público revisado. TLIF sí está confirmado con cage PEEK y sistema de fusión transforaminal Canwell.",
-    "fuente_alquiler": "https://www.insumedicbolivia.com/categoria-producto/alquiler-de-equipo/"
+    "fuente_alquiler": "https://www.insumedicbolivia.com/categoria-producto/alquiler-de-equipo/",
+    "fuente_distribucion_hpbio": "https://hpbio.com.br/contato/"
   },
   {
     "id": "bol-v170-proveedor-mundo-meditech-pendiente",
@@ -6253,5 +6286,124 @@ window.VCB_SUPPLIES = [
     "estado_bolivia": "La categoría Alquiler de Equipo y estos tres equipos están publicados por INSUMEDIC. No se presenta como alquiler ALIF.",
     "modalidad_alquiler": "Alquiler confirmado para los equipos listados; ALIF específico no identificado.",
     "fecha_verificacion_bolivia": "2026-09-05"
+  },
+  {
+    "id": "bol-v192-insumedic-hpbio-dve-free-flow",
+    "tipo_registro": "insumo",
+    "grupo_catalogo": "insumo",
+    "marca": "HPBio DVE Free Flow",
+    "nombre": "Sistema de drenaje ventricular externo Free Flow",
+    "fabricante": "HPBio",
+    "categoria": "Neurocirugía · DVE · drenaje ventricular externo",
+    "presentaciones": [
+      "Adulto 250 mm (DVEAF25)",
+      "Adulto 350 mm (DVEAF35)",
+      "Infantil 220/350 mm",
+      "Neonatal 220 mm",
+      "Hemorrágico 250/350 mm"
+    ],
+    "aliases": [
+      "dve",
+      "drenaje ventricular externo",
+      "derivacion ventricular externa",
+      "derivación ventricular externa",
+      "evd",
+      "free flow",
+      "dve insumedic",
+      "hpbio dve",
+      "cateter ventricular externo"
+    ],
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "telefonos": [
+      "+591 72146428",
+      "+591 71346498",
+      "+591 71632529"
+    ],
+    "email": "generalmanager@insumedicbolivia.com",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
+    "fuente": "https://hpbio.com.br/produtos/dveff/",
+    "verificacion_bolivia": true,
+    "visible_publico_bolivia": true,
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto para Bolivia. Producto DVE Free Flow documentado por fabricante; confirmar stock y DI exacto.",
+    "fecha_verificacion_bolivia": "2026-09-05",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
+    "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion"
+  },
+  {
+    "id": "bol-v192-insumedic-hpbio-dve-economica",
+    "tipo_registro": "insumo",
+    "grupo_catalogo": "insumo",
+    "marca": "HPBio DVE Económica",
+    "nombre": "Sistema de drenaje ventricular externo económico",
+    "fabricante": "HPBio",
+    "categoria": "Neurocirugía · DVE · drenaje ventricular externo",
+    "presentaciones": [
+      "Adulto 250 mm (DVEA1-EC)",
+      "Adulto 350 mm (DVEA2-EC)",
+      "Neonatal 220 mm (DVEN-EC)"
+    ],
+    "aliases": [
+      "dve",
+      "drenaje ventricular externo",
+      "derivacion ventricular externa",
+      "derivación ventricular externa",
+      "evd",
+      "dve economica",
+      "dve económica",
+      "dve insumedic",
+      "hpbio dve"
+    ],
+    "proveedor_bolivia": "INSUMEDIC S.R.L.",
+    "proveedor_id": "bol-v170-proveedor-insumedic-srl",
+    "telefonos": [
+      "+591 72146428",
+      "+591 71346498",
+      "+591 71632529"
+    ],
+    "email": "generalmanager@insumedicbolivia.com",
+    "fuente_bolivia": "https://hpbio.com.br/contato/",
+    "fuente": "https://hpbio.com.br/produtos/dve-economica/",
+    "verificacion_bolivia": true,
+    "visible_publico_bolivia": true,
+    "estado_bolivia": "HPBio publica a INSUMEDIC S.R.L. como contacto para Bolivia. Producto DVE Económica documentado por fabricante; confirmar stock y DI exacto.",
+    "fecha_verificacion_bolivia": "2026-09-05",
+    "nivel_evidencia": "fabricante_oficial_mas_distribuidor_bolivia",
+    "validacion_agemed": "registro_DI_especifico_pendiente_de_conciliacion"
+  },
+  {
+    "id": "bol-v192-ada-dve-reportado",
+    "tipo_registro": "insumo",
+    "grupo_catalogo": "insumo",
+    "marca": "ADA Bolivia · DVE",
+    "nombre": "Drenaje ventricular externo · disponibilidad reportada",
+    "fabricante": "Marca/modelo por confirmar con proveedor",
+    "categoria": "Neurocirugía · DVE · disponibilidad reportada",
+    "presentaciones": [
+      "DVE · marca, modelo y configuración por confirmar directamente con ADA Bolivia"
+    ],
+    "aliases": [
+      "ada dve",
+      "dve",
+      "drenaje ventricular externo",
+      "derivacion ventricular externa",
+      "derivación ventricular externa",
+      "cateter ventricular externo"
+    ],
+    "proveedor_bolivia": "ADA Bolivia Import-Export",
+    "proveedor_id": "bol-proveedor-ada-bolivia",
+    "telefonos": [
+      "+591 2 2311508"
+    ],
+    "whatsapp": "+591 72049362",
+    "email": "info@adabolivia.com",
+    "fuente_bolivia": "https://www.adabolivia.com/",
+    "reportado_usuario": true,
+    "verificacion_bolivia": false,
+    "visible_publico_bolivia": true,
+    "estado_bolivia": "Disponibilidad de DVE reportada por usuaria. ADA publica una línea de neurología/hidrocefalia, pero la marca/modelo DVE y el DI específico aún requieren confirmación documental directa.",
+    "fecha_verificacion_bolivia": "2026-09-05",
+    "nivel_evidencia": "aporte_usuario_pendiente",
+    "validacion_agemed": "pendiente_de_confirmar_modelo_y_registro_DI"
   }
 ];

@@ -1,8 +1,4 @@
 Vademécum Clínico Bolivia PWA 0.19.2
-- Fuerza HTTPS fuera de localhost.
-- CSP: upgrade-insecure-requests + block-all-mixed-content.
-- Manifest con id/start_url/scope raíz.
-- Iconos versionados any + maskable + Apple touch.
-- Service worker v0.19.2 elimina cachés anteriores.
-
-Si Android muestra un icono con insignia de Chrome, ese elemento es un acceso directo del navegador, no la PWA instalada. Eliminarlo y reinstalar desde Chrome una vez que GitHub Pages tenga Enforce HTTPS activo.
+Búsqueda: +, más, con; IV/EV/endovenoso/intravenoso.
+Hidrocefalia: DVP/DVE ADA e INSUMEDIC con niveles de evidencia diferenciados.
+HTTPS forzado en producción y caché PWA renovada.

@@ -1,5 +1,5 @@
 window.VCB_CONFIG={
-  appVersion:'0.19.1',
+  appVersion:'0.19.2',
   bundledCatalogVersion:'0.19.0',
   updateManifestUrl:'./data/catalog-version.json',
   syncIntervalMs:86400000,

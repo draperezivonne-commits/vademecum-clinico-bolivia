@@ -1,0 +1,58 @@
+name: Empaquetar versión actual completa
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/package-current-release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Leer versión
+        id: version
+        run: |
+          VERSION=$(python - <<'PY'
+          import json
+          with open('docs/data/app-version.json', encoding='utf-8') as f:
+              print(json.load(f)['latestVersion'])
+          PY
+          )
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Crear ZIP PWA WEB
+        run: |
+          VERSION='${{ steps.version.outputs.version }}'
+          mkdir -p release
+          cd docs
+          zip -r "../release/Vademecum_Clinico_Bolivia_v${VERSION}_PWA_WEB.zip" . -x 'downloads/*.exe'
+          cd ..
+
+      - name: Crear ZIP código fuente completo
+        run: |
+          VERSION='${{ steps.version.outputs.version }}'
+          mkdir -p release/source
+          cp -a docs release/source/docs
+          cp -a windows_portable release/source/windows_portable
+          cp -a .github release/source/.github
+          cp README.md release/source/README.md
+          cd release/source
+          zip -r "../Vademecum_Clinico_Bolivia_v${VERSION}_FUENTE_COMPLETO.zip" .
+          cd ../..
+
+      - name: Publicar artefactos
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vademecum-Clinico-Bolivia-paquetes-v${{ steps.version.outputs.version }}
+          path: |
+            release/Vademecum_Clinico_Bolivia_v${{ steps.version.outputs.version }}_PWA_WEB.zip
+            release/Vademecum_Clinico_Bolivia_v${{ steps.version.outputs.version }}_FUENTE_COMPLETO.zip
+          if-no-files-found: error

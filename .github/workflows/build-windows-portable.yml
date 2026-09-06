@@ -1,0 +1,92 @@
+name: Construir y publicar Windows portable
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'windows_portable/**'
+      - '.github/workflows/build-windows-portable.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip windows build]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.x'
+
+      - name: Preparar aplicación embebida
+        run: |
+          rm -rf windows_portable/app
+          mkdir -p windows_portable/app
+          rsync -a --exclude 'downloads/' docs/ windows_portable/app/
+
+      - name: Preparar icono Windows
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image
+          img=Image.open('docs/icons/icon-512.png').convert('RGBA')
+          img.save('windows_portable/icon.ico', sizes=[(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)])
+          PY
+          go install github.com/akavel/rsrc@latest
+          "$HOME/go/bin/rsrc" -ico windows_portable/icon.ico -o windows_portable/icon_windows_amd64.syso
+
+      - name: Compilar EXE Windows x64
+        run: |
+          cd windows_portable
+          CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags='-s -w -H=windowsgui' -o ../Vademecum_Clinico_Bolivia_latest.exe .
+          cd ..
+          test -s Vademecum_Clinico_Bolivia_latest.exe
+
+      - name: Publicar EXE y actualizar SHA-256
+        run: |
+          VERSION=$(python - <<'PY'
+          import json
+          print(json.load(open('docs/data/app-version.json', encoding='utf-8'))['latestVersion'])
+          PY
+          )
+          mkdir -p docs/downloads
+          cp Vademecum_Clinico_Bolivia_latest.exe docs/downloads/Vademecum_Clinico_Bolivia_latest.exe
+          cp Vademecum_Clinico_Bolivia_latest.exe "docs/downloads/Vademecum_Clinico_Bolivia_v${VERSION}.exe"
+          export VCB_SHA=$(sha256sum Vademecum_Clinico_Bolivia_latest.exe | awk '{print $1}')
+          python - <<'PY'
+          import json, os
+          p='docs/data/app-version.json'
+          with open(p, encoding='utf-8') as f: d=json.load(f)
+          d['desktopDownloadUrl']='https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe'
+          d['desktopSha256']=os.environ['VCB_SHA']
+          with open(p,'w',encoding='utf-8') as f:
+              json.dump(d,f,ensure_ascii=False,indent=2)
+              f.write('\n')
+          print('Windows SHA-256:', d['desktopSha256'])
+          PY
+
+      - name: Guardar ejecutable en GitHub Pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/downloads docs/data/app-version.json
+          if git diff --cached --quiet; then
+            echo 'Sin cambios que publicar'
+            exit 0
+          fi
+          git commit -m '[skip windows build] Publicar ejecutable Windows y SHA-256'
+          git push
+
+      - name: Conservar artefacto de compilación
+        uses: actions/upload-artifact@v4
+        with:
+          name: Vademecum-Clinico-Bolivia-Windows-portable
+          path: Vademecum_Clinico_Bolivia_latest.exe
+          if-no-files-found: error

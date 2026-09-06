@@ -1,0 +1,71 @@
+name: Validar interacciones v0.20.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/interaction_kb_v0200.js'
+      - 'docs/data/interaction_engine_v0200.js'
+      - 'docs/data/interaction_sources_v0200.json'
+      - 'docs/index.html'
+      - 'docs/config.js'
+      - 'docs/sw.js'
+      - 'docs/manifest.webmanifest'
+      - '.github/workflows/validate-v0200-interactions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validar sintaxis JavaScript
+        run: |
+          node --check docs/data/interaction_kb_v0200.js
+          node --check docs/data/interaction_engine_v0200.js
+          node --check docs/sw.js
+          node --check docs/config.js
+
+      - name: Validar estructura y conteos de la base
+        run: |
+          node <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const code=fs.readFileSync('docs/data/interaction_kb_v0200.js','utf8');
+          const sandbox={window:{}};
+          vm.createContext(sandbox);
+          vm.runInContext(code,sandbox);
+          const k=sandbox.window.VCB_INTERACTION_KB;
+          if(!k) throw new Error('VCB_INTERACTION_KB no se creó');
+          const sourceCount=Object.keys(k.sources||{}).length;
+          const groupCount=Object.keys(k.groups||{}).length;
+          if(sourceCount!==19) throw new Error(`Fuentes: ${sourceCount}, esperado 19`);
+          if(groupCount!==65) throw new Error(`Grupos: ${groupCount}, esperado 65`);
+          if((k.class_rules||[]).length!==59) throw new Error(`Reglas clase: ${k.class_rules.length}, esperado 59`);
+          if((k.exact_rules||[]).length!==64) throw new Error(`Reglas exactas: ${k.exact_rules.length}, esperado 64`);
+          const ex=(a,b)=>k.exact_rules.find(r=>(r.a===a&&r.b===b)||(r.a===b&&r.b===a));
+          if(!ex('Ciprofloxacino','Tizanidina')?.nivel.toLowerCase().includes('contra')) throw new Error('Falta ciprofloxacino+tizanidina contraindicada');
+          if(!ex('Allopurinol','Azatioprina')) throw new Error('Falta allopurinol+azatioprina');
+          if(!ex('Linezolid','Sertralina')) throw new Error('Falta linezolid+sertralina');
+          const cl=(a,b)=>k.class_rules.find(r=>(r.a===a&&r.b===b)||(r.a===b&&r.b===a));
+          for(const pair of [['NITRATES','PDE5'],['OPIOIDS','BENZOS'],['CARBAPENEMS','VALPROATES'],['DOACS','STRONG_CYP3A_INDUCERS'],['LEVOTHYROXINE','CATIONS']]){
+            if(!cl(...pair)) throw new Error('Falta regla de clase '+pair.join('+'));
+          }
+          const src=JSON.parse(fs.readFileSync('docs/data/interaction_sources_v0200.json','utf8'));
+          if(src.version!=='0.20.0'||Object.keys(src.sources||{}).length!==19) throw new Error('Inventario de fuentes inconsistente');
+          console.log({sourceCount,groupCount,classRules:k.class_rules.length,exactRules:k.exact_rules.length});
+          NODE
+
+      - name: Validar activación en PWA
+        run: |
+          grep -q 'interaction_kb_v0200.js?v=0.20.0' docs/index.html
+          grep -q 'interaction_engine_v0200.js?v=0.20.0' docs/index.html
+          if grep -q 'interaction_engine_v0194.js' docs/index.html; then echo 'Motor v0.19.4 todavía activo' && exit 1; fi
+          grep -q "appVersion:'0.20.0'" docs/config.js
+          grep -q "vcb-shell-0.20.0" docs/sw.js
+          grep -q 'interaction_kb_v0200.js?v=0.20.0' docs/sw.js
+          grep -q 'interaction_engine_v0200.js?v=0.20.0' docs/sw.js
+          grep -q 'v=0.20.0' docs/manifest.webmanifest

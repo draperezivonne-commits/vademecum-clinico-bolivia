@@ -1,6 +1,7 @@
 {
   "version": "0.19.0",
-  "appCompatibility": "0.19.x",
+  "appCompatibility": "0.19.x-0.20.x",
+  "appVersion": "0.20.0",
   "count": 2782,
   "verifiedBolivia": 2687,
   "publicVisible": 2683,
@@ -8,7 +9,7 @@
   "regulatoryExcluded": 4,
   "sha256": "7f5cddea7b87227142c323ccf628b7d0d43961109abea7e00894a68486346c35",
   "catalogUrl": "./catalogo_medicamentos_v0.19.0.json",
-  "updatedAt": "2026-09-05T17:45:00-04:00",
+  "updatedAt": "2026-09-05T20:35:00-04:00",
   "suppliesVisible": 133,
   "providersVisible": 16,
   "regulatoryAlerts": 3,
@@ -23,9 +24,18 @@
   "implantExactDIOnlyWhenDocumented": true,
   "providerDirectoryEntries": 17,
   "pendingProviderEntries": 1,
-  "notes": "v0.19.0: foco cirugía tubular/MISS; IGEMMA sistema tubular + drill MISS + fijación percutánea y alquiler de endoscopio diferenciados; TLIF MISS enlaza INSUMEDIC sin asumir compatibilidad de kits.",
   "supportServicesVisible": 3,
   "spineApproaches": 5,
   "spineMissTechniques": 4,
-  "missTubularSection": true
+  "missTubularSection": true,
+  "interactionVersion": "0.20.0",
+  "interactionSources": 19,
+  "interactionDrugGroups": 65,
+  "interactionClassRules": 59,
+  "interactionExactRules": 64,
+  "interactionEstimatedClassPairCoverage": 2115,
+  "interactionPolypharmacyRules": true,
+  "interactionSeverityUI": true,
+  "interactionNoFalseSafetyClaim": true,
+  "notes": "v0.20.0: comprobador de interacciones por seguridad de la asociación con reglas exactas, reglas por familias farmacológicas y alertas de polifarmacia; mantiene catálogo farmacológico base v0.19.0 y enriquecimiento de búsqueda v0.19.3."
 }

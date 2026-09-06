@@ -2,7 +2,7 @@
   "version": "0.19.0",
   "enrichmentVersion": "0.20.2",
   "appCompatibility": "0.19.x-0.20.x",
-  "appVersion": "0.20.2",
+  "appVersion": "0.20.3",
   "count": 2782,
   "verifiedBolivia": 2687,
   "publicVisible": 2683,
@@ -10,7 +10,7 @@
   "regulatoryExcluded": 4,
   "sha256": "7f5cddea7b87227142c323ccf628b7d0d43961109abea7e00894a68486346c35",
   "catalogUrl": "./catalogo_medicamentos_v0.19.0.json",
-  "updatedAt": "2026-09-06T00:09:00-04:00",
+  "updatedAt": "2026-09-06T00:22:00-04:00",
   "suppliesVisible": 133,
   "providersVisible": 17,
   "regulatoryAlerts": 3,
@@ -42,5 +42,7 @@
   "megaVitDistributorDirectory": true,
   "herbalSedativeExpansion": true,
   "supplySectionSearch": true,
-  "notes": "v0.20.2: incorpora la linea Mega Vit/Mason Vitamins, amplía sedantes naturales relacionados con Armonyl y añade buscador específico dentro de Insumos y equipos. Conserva interacciones v0.20.0 y el sistema de actualización coordinada PWA/Windows."
+  "categorySearchAllTabs": true,
+  "categorySearchTabs": ["especialidades","transversales","implantes","miss","abordajes","soporte","insumos","proveedores"],
+  "notes": "v0.20.3: añade buscador universal en todas las pestañas de Categorías, con búsqueda sobre registros aunque la subcategoría no esté abierta. Conserva Mega Vit/Mason Vitamins, ampliación de sedantes naturales, interacciones v0.20.0 y actualización coordinada PWA/Windows."
 }

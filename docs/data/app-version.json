@@ -1,11 +1,12 @@
 {
-  "latestVersion": "0.20.7",
+  "latestVersion": "0.20.8",
   "catalogVersion": "0.20.6",
-  "interactionVersion": "0.20.0",
-  "interactionUiVersion": "0.20.7",
+  "interactionVersion": "0.20.8",
+  "interactionUiVersion": "0.20.8",
+  "interactionAuditVersion": "0.20.8",
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "4c25a2ededaddc79a1ff69adc2379e950a8010a6d990c7cb1673e1829916eb90",
-  "notes": "v0.20.7: simplifica el comprobador de interacciones. El resultado se limita a los medicamentos seleccionados y muestra una conclusión directa: Compatible según la base actual, Monitorizar, Evitar o No combinar. Se retiran de la vista la sección de principios activos y la matriz por pares. Debajo se muestra qué podría pasar y qué conducta considerar. No se muestran combinaciones con otros medicamentos no ingresados. Conserva el motor de interacciones v0.20.0 y todas las mejoras de insumos v0.20.6."
+  "notes": "v0.20.8: auditoría de interacciones y asociaciones. Corrige metoclopramida + levodopa/agonistas dopaminérgicos como combinación a evitar; revisa metoclopramida con antipsicóticos, MAOI, inhibidores CYP2D6, depresores SNC, digoxina y bloqueadores neuromusculares; amplía interacciones de levodopa y reduce reglas serotoninérgicas demasiado generales. Los productos combinados se evalúan ingrediente por ingrediente. Un resultado sin regla ya no se presenta como seguro, sino como sin interacción relevante detectada en la base actual."
 }

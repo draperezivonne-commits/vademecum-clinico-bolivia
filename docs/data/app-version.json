@@ -9,6 +9,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "38a7d4ea2b72ec588415fa90d88138a95d5c8c89d6fa4451edc4e98b59ff6396",
+  "desktopSha256": "bc1f60ca3c68382d89b10cd9446d158775479be379edf8569e8a9381afa2c6b4",
   "notes": "v0.20.9: corrige Tolestan a Sumatriptán 85 mg + Naproxeno sódico 500 mg; añade naproxeno solo y amplía medicamentos para migraña disponibles en Bolivia, incluyendo triptanes, ergotamínicos y opciones de profilaxis. La búsqueda reconoce migraña, sumatriptán, rizatriptán y naproxeno. El comprobador añade la contraindicación de triptán + ergotamínico y de dos triptanes dentro de 24 horas."
 }

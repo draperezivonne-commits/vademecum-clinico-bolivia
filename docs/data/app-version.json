@@ -5,6 +5,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "fa3bbb06cb773e86a51cf103bc876af0d79444a64b260ee0dbebd16d816045d4",
+  "desktopSha256": "e4d57b41136ae2e08e31748a9ba6cc2de045ee9e4f4c6fbf57387f932dd20887",
   "notes": "v0.20.3: añade buscador en todas las pestañas de Categorías: Especialidades, Transversales, Implantes, MISS/tubular, ALIF/abordajes, Soporte/alquiler, Insumos/equipos y Proveedores. La búsqueda recorre toda la pestaña aunque la subcategoría no esté abierta. Conserva Mega Vit/Mason Vitamins, Armonyl/Sedativol, interacciones y funcionamiento offline."
 }

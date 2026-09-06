@@ -1,0 +1,33 @@
+{
+  "version": "0.20.0",
+  "updated_at": "2026-09-05",
+  "meta": {
+    "source_count": 19,
+    "group_count": 65,
+    "class_rule_count": 59,
+    "exact_rule_count": 64,
+    "estimated_class_pair_coverage": 2115,
+    "design": "reglas exactas + familias farmacológicas + alertas de polifarmacia"
+  },
+  "sources": {
+    "FDA_OPIOID_BENZO": {"title": "FDA: opioides + benzodiacepinas / depresores del SNC", "url": "https://www.fda.gov/drugs/drug-safety-communications/fda-updates-prescribing-information-all-opioid-pain-medicines-provide-additional-guidance-safe-use"},
+    "FDA_GABAPENTINOID": {"title": "FDA: gabapentina/pregabalina y riesgo de depresión respiratoria", "url": "https://www.fda.gov/safety/medical-product-safety-information/neurontin-gralise-horizant-gabapentin-and-lyrica-lyrica-cr-pregabalin-drug-safety-communication"},
+    "FDA_SILDENAFIL": {"title": "FDA: sildenafilo, nitratos y otras interacciones", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2015/020895s045lbl.pdf"},
+    "FDA_TIZANIDINE": {"title": "FDA: tizanidina (Zanaflex) interacciones", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/020397s028lbl.pdf"},
+    "FDA_LINEZOLID": {"title": "FDA: linezolid e interacción serotoninérgica", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/206473s011lbl.pdf"},
+    "FDA_ELIQUIS": {"title": "FDA: apixabán, inductores y riesgo hemorrágico", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2012/202155Orig1s000Lbl_ini.pdf"},
+    "FDA_ENTRESTO": {"title": "FDA: sacubitrilo/valsartán y ACEI", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/218591Orig1s000%2C207620Orig1s025lbl.pdf"},
+    "FDA_MEROPENEM": {"title": "FDA: meropenem y ácido valproico", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/202106s007lbl.pdf"},
+    "FDA_CLARITHRO": {"title": "FDA: claritromicina y múltiples interacciones", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/050757s021lbl.pdf"},
+    "FDA_CLOPIDOGREL": {"title": "FDA: clopidogrel y omeprazol/esomeprazol", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/020839s068lbl.pdf"},
+    "FDA_ALLOPURINOL": {"title": "FDA: allopurinol y azatioprina/mercaptopurina", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/020298s012lbl.pdf"},
+    "FDA_CITALOPRAM": {"title": "FDA: citalopram, MAOI y QT", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/215428s002lbl.pdf"},
+    "FDA_SEROTONERGIC": {"title": "FDA: antidepresivos y síndrome serotoninérgico", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/022567s022lbl.pdf"},
+    "FDA_NSAID": {"title": "FDA: naproxeno/NSAID, litio y metotrexato", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/021926s016lbl.pdf"},
+    "FDA_LEVOTHYROXINE": {"title": "FDA: levotiroxina con calcio/hierro", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/021402s024s028lbl.pdf"},
+    "FDA_METFORMIN": {"title": "FDA: metformina y topiramato/inhibidores de anhidrasa carbónica", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2017/021178s016s017lbl.pdf"},
+    "FDA_DIGOXIN": {"title": "FDA: digoxina, P-gp y trastornos electrolíticos", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/021648s013lbl.pdf"},
+    "FDA_TMP_SMX": {"title": "FDA: trimetoprim/sulfametoxazol e hiperpotasemia", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/018598s055lbl.pdf"},
+    "FDA_TACROLIMUS": {"title": "FDA: tacrolimus e inhibidores/inductores CYP3A", "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/204096s007lbl.pdf"}
+  }
+}

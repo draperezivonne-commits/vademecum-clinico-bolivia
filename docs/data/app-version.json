@@ -1,10 +1,11 @@
 {
-  "latestVersion": "0.20.6",
+  "latestVersion": "0.20.7",
   "catalogVersion": "0.20.6",
   "interactionVersion": "0.20.0",
+  "interactionUiVersion": "0.20.7",
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "a80a2878110e2c5f7fe2a5fc94dc33bdc1497c3faa534cc0763a00e9605c0efe",
-  "notes": "v0.20.6: añade Premier Internacional como proveedor y fluoresceína sódica para cirugía guiada por fluorescencia en tumores cerebrales como disponibilidad reportada en Cochabamba. El contacto 79790820 queda asociado como contacto directo a confirmar. La presentación neuroquirúrgica exacta, fabricante, registro y stock permanecen pendientes de verificación; BIO FLUORO se mantiene identificado como tira oftálmica y no como presentación intravenosa neuroquirúrgica. Conserva la reorganización de Insumos v0.20.5."
+  "desktopSha256": "",
+  "notes": "v0.20.7: simplifica el comprobador de interacciones. El resultado se limita a los medicamentos seleccionados y muestra una conclusión directa: Compatible según la base actual, Monitorizar, Evitar o No combinar. Se retiran de la vista la sección de principios activos y la matriz por pares. Debajo se muestra qué podría pasar y qué conducta considerar. No se muestran combinaciones con otros medicamentos no ingresados. Conserva el motor de interacciones v0.20.0 y todas las mejoras de insumos v0.20.6."
 }

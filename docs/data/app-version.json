@@ -5,6 +5,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "d0c436dbac2b6a2ff4d2e4cc8a0a06bbb61730ed606239ca48fc9e17af63fa92",
+  "desktopSha256": "a80a2878110e2c5f7fe2a5fc94dc33bdc1497c3faa534cc0763a00e9605c0efe",
   "notes": "v0.20.6: añade Premier Internacional como proveedor y fluoresceína sódica para cirugía guiada por fluorescencia en tumores cerebrales como disponibilidad reportada en Cochabamba. El contacto 79790820 queda asociado como contacto directo a confirmar. La presentación neuroquirúrgica exacta, fabricante, registro y stock permanecen pendientes de verificación; BIO FLUORO se mantiene identificado como tira oftálmica y no como presentación intravenosa neuroquirúrgica. Conserva la reorganización de Insumos v0.20.5."
 }

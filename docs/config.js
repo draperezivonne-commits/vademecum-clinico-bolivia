@@ -1,5 +1,5 @@
 window.VCB_CONFIG={
-  appVersion:'0.20.4',
+  appVersion:'0.20.5',
   bundledCatalogVersion:'0.19.0',
   interactionVersion:'0.20.0',
   interactionExactRules:64,

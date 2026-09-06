@@ -6,6 +6,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "",
+  "desktopSha256": "4c25a2ededaddc79a1ff69adc2379e950a8010a6d990c7cb1673e1829916eb90",
   "notes": "v0.20.7: simplifica el comprobador de interacciones. El resultado se limita a los medicamentos seleccionados y muestra una conclusión directa: Compatible según la base actual, Monitorizar, Evitar o No combinar. Se retiran de la vista la sección de principios activos y la matriz por pares. Debajo se muestra qué podría pasar y qué conducta considerar. No se muestran combinaciones con otros medicamentos no ingresados. Conserva el motor de interacciones v0.20.0 y todas las mejoras de insumos v0.20.6."
 }

@@ -5,6 +5,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "6d0e17b69f237dee814cedd99aed33f2d9840a8136bdac0c7814fc28427061e6",
+  "desktopSha256": "d0c436dbac2b6a2ff4d2e4cc8a0a06bbb61730ed606239ca48fc9e17af63fa92",
   "notes": "v0.20.5: el módulo Categorías pasa a llamarse Insumos. Se retira Especialidades del módulo sin eliminar medicamentos. Se crea Cirugía de columna para ALIF/OLIF/LLIF/TLIF, MISS/tubular y productos/implantes de columna; los demás implantes pasan a Implantes neuroquirúrgicos. El buscador de Insumos ahora busca en todas las categorías a la vez."
 }

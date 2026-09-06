@@ -5,6 +5,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "187a5634a6830ccc0c897c58bb0adac509566228de36ed20420c12bcfb504202",
+  "desktopSha256": "fa3bbb06cb773e86a51cf103bc876af0d79444a64b260ee0dbebd16d816045d4",
   "notes": "v0.20.2: añade buscador específico en Insumos y equipos, amplía productos sedantes naturales relacionados con Armonyl (incluye Sedativol y variantes), incorpora 54 productos de la línea Mega Vit/Mason Vitamins y el directorio Mega Vit Bolivia. Internet se necesita solo para comprobar, sincronizar y descargar actualizaciones; después el Vademécum continúa disponible sin conexión."
 }

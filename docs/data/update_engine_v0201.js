@@ -1,5 +1,5 @@
 (()=>{
-  function currentVersion(){return (window.VCB_CONFIG&&window.VCB_CONFIG.appVersion)||'0.20.1'}
+  function currentVersion(){return (window.VCB_CONFIG&&window.VCB_CONFIG.appVersion)||'0.20.2'}
   function versionParts(v){return String(v||'0').split('.').map(x=>parseInt(x,10)||0)}
   function versionGreater(a,b){const A=versionParts(a),B=versionParts(b),n=Math.max(A.length,B.length);for(let i=0;i<n;i++){const x=A[i]||0,y=B[i]||0;if(x!==y)return x>y}return false}
   function setAppUpdateUi(text,available=false){const el=document.querySelector('#appUpdateStatus');if(el)el.textContent=text;const b=document.querySelector('#btnApplyWebUpdate');if(b)b.classList.toggle('hidden',!available)}
@@ -9,4 +9,5 @@
   async function checkAllUpdates(){if(!navigator.onLine){setAppUpdateUi(`Aplicación ${currentVersion()} · sin conexión. Se necesita internet para sincronizar actualizaciones.`);if(typeof updateSyncUi==='function')updateSyncUi('Catálogo local disponible · sin conexión.');if(typeof toast==='function')toast('Conéctese a internet para sincronizar actualizaciones');return}setAppUpdateUi('Comprobando versión de la aplicación…');if(typeof updateSyncUi==='function')updateSyncUi('Comprobando actualización del catálogo…');const jobs=[checkAppUpdate()];if(typeof maybeSyncCatalog==='function')jobs.push(maybeSyncCatalog(true));await Promise.allSettled(jobs)}
   const check=document.querySelector('#btnCheckUpdates'),apply=document.querySelector('#btnApplyWebUpdate');if(check)check.addEventListener('click',checkAllUpdates);if(apply)apply.addEventListener('click',applyWebUpdate);setTimeout(()=>checkAppUpdate().catch(console.warn),900);
   window.VCB_CHECK_ALL_UPDATES=checkAllUpdates;
+  if(!window.VCB_FEATURE_PATCH_VERSION){const s=document.createElement('script');s.src='./data/feature_patch_v0202.js?v=0.20.2';s.defer=true;document.head.appendChild(s)}
 })();

@@ -38,7 +38,11 @@
     document.querySelectorAll('.cat-tab').forEach(b=>b.onclick=()=>window.renderCategories(b.dataset.cat));
   }
 
-  const about=document.querySelector('#sincronizacion .about-card p b');
-  if(about) about.innerHTML=about.innerHTML.replace(/Aplicación\s+0\.20\.\d+/,'Aplicación 0.20.4');
-  window.VCB_FEATURE_PATCH_VERSION='0.20.4';
+  const aboutP=document.querySelector('#sincronizacion .about-card p');
+  if(aboutP)aboutP.innerHTML='<b>Aplicación 0.20.5 · catálogo base 0.19.0 + ampliaciones farmacológicas/insumos 0.20.4 · organización del módulo Insumos 0.20.5 · interacciones 0.20.0 · filtro público Bolivia activo.</b> Los medicamentos permanecen íntegros en la base y se consultan desde Buscar medicamentos. El módulo Insumos se reorganiza en Cirugía de columna, Implantes neuroquirúrgicos, Insumos y equipos, Soporte/alquiler y Proveedores Bolivia, con un buscador global que recorre todas las categorías.';
+
+  if(!document.querySelector('script[data-vcb0205]')){
+    const s=document.createElement('script');s.src='./data/feature_patch_v0205.js?v=0.20.5';s.dataset.vcb0205='1';document.body.appendChild(s);
+  }
+  window.VCB_FEATURE_PATCH_VERSION='0.20.5';
 })();

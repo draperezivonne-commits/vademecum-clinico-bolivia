@@ -1,5 +1,5 @@
 window.VCB_CONFIG={
-  appVersion:'0.20.0',
+  appVersion:'0.20.1',
   bundledCatalogVersion:'0.19.0',
   interactionVersion:'0.20.0',
   interactionExactRules:64,
@@ -7,6 +7,7 @@ window.VCB_CONFIG={
   interactionDrugGroups:65,
   interactionEstimatedClassPairCoverage:2115,
   updateManifestUrl:'./data/catalog-version.json',
-  syncIntervalMs:86400000,
+  appUpdateManifestUrl:'./data/app-version.json',
+  syncIntervalMs:21600000,
   minimumCatalogCount:2782
 };

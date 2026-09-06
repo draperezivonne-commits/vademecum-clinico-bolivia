@@ -1,10 +1,10 @@
 {
-  "latestVersion": "0.20.4",
+  "latestVersion": "0.20.5",
   "catalogVersion": "0.20.4",
   "interactionVersion": "0.20.0",
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "6d0e17b69f237dee814cedd99aed33f2d9840a8136bdac0c7814fc28427061e6",
-  "notes": "v0.20.4: retira la pestaña Transversales para simplificar la navegación sin eliminar sus medicamentos. Añade Gelfoam a Insumos y equipos con alias Gelfoam/Gealfoam/gelatina absorbible/esponja hemostática. Conserva buscadores por categoría, Mega Vit/Mason Vitamins, Armonyl/Sedativol, interacciones y funcionamiento offline."
+  "notes": "v0.20.5: el módulo Categorías pasa a llamarse Insumos. Se retira Especialidades del módulo sin eliminar medicamentos. Se crea Cirugía de columna para ALIF/OLIF/LLIF/TLIF, MISS/tubular y productos/implantes de columna; los demás implantes pasan a Implantes neuroquirúrgicos. El buscador de Insumos ahora busca en todas las categorías a la vez."
 }

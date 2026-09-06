@@ -8,6 +8,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "08bbb61a5cea1e3a5db426ab3ee529f665982c8019f2a4e60a8edb8273a9986d",
+  "desktopSha256": "38a7d4ea2b72ec588415fa90d88138a95d5c8c89d6fa4451edc4e98b59ff6396",
   "notes": "v0.20.8: auditoría clínica y técnica de interacciones. Corrige metoclopramida + levodopa/agonistas dopaminérgicos como combinación a evitar; amplía reglas verificadas de metoclopramida y levodopa y reduce generalizaciones inseguras. Los productos combinados se evalúan ingrediente por ingrediente. La resolución de nombres es estricta: una marca exacta usa su composición real, un genérico no hereda ingredientes de asociaciones y una entrada ambigua no mezcla resultados; se informa evaluación incompleta en vez de adivinar. Un resultado sin regla nunca se denomina seguro, sino sin interacción relevante detectada en la base actual."
 }

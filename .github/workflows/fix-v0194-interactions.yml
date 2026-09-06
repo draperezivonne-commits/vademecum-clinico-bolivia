@@ -1,0 +1,74 @@
+name: Vademecum v0.19.4 interacciones orientadas a seguridad
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-v0194-interactions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actualizar interfaz y PWA v0.19.4
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          root=Path('docs')
+
+          # index.html
+          p=root/'index.html'
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('<h2>Interacciones medicamentosas</h2><p>Introduzca marcas o principios activos. El sistema resuelve la composición y compara todos los pares.</p>',
+                      '<h2>¿Se pueden usar juntos?</h2><p>Introduzca de 2 a 10 medicamentos o marcas. El sistema identifica sus principios activos y evalúa si la asociación presenta una interacción conocida, su gravedad, qué puede ocurrir y qué conducta considerar.</p>')
+          s=s.replace('<div class="warning-banner"><b>Base clínica complementaria:</b> No encontrar una interacción no confirma que la combinación sea segura.</div>',
+                      '<div class="warning-banner"><b>Comprobador de seguridad de la asociación:</b> los resultados se clasifican por gravedad. La composición del producto se usa solo para reconocer la marca; no es el resultado de la interacción.</div>')
+          s=s.replace('<strong>Verificar interacciones</strong><small>Compare de 2 a 10 medicamentos</small>',
+                      '<strong>¿Se pueden usar juntos?</strong><small>Interacciones, gravedad y conducta de 2 a 10 medicamentos</small>')
+          s=s.replace('Aplicación 0.19.3 · catálogo base 0.19.0 + enriquecimiento 0.19.3',
+                      'Aplicación 0.19.4 · catálogo base 0.19.0 + enriquecimiento 0.19.3')
+          marker='<script src="./data/search_patch_v0193.js?v=0.19.3"></script>'
+          add=marker+'<script src="./data/interaction_engine_v0194.js?v=0.19.4"></script>'
+          if 'interaction_engine_v0194.js' not in s: s=s.replace(marker,add)
+          s=s.replace('manifest.webmanifest?v=0.19.3','manifest.webmanifest?v=0.19.4')
+          s=s.replace('icon-192.png?v=0.19.3','icon-192.png?v=0.19.4')
+          s=s.replace('styles.css?v=0.19.3','styles.css?v=0.19.4')
+          p.write_text(s,encoding='utf-8')
+
+          # config.js
+          p=root/'config.js'; s=p.read_text(encoding='utf-8')
+          s=s.replace("appVersion:'0.19.3'","appVersion:'0.19.4'").replace("appVersion:'0.19.2'","appVersion:'0.19.4'")
+          p.write_text(s,encoding='utf-8')
+
+          # manifest
+          p=root/'manifest.webmanifest'; m=json.loads(p.read_text(encoding='utf-8'))
+          for i in m.get('icons',[]): i['src']=i['src'].split('?')[0]+'?v=0.19.4'
+          p.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+
+          # service worker
+          p=root/'sw.js'; s=p.read_text(encoding='utf-8')
+          s=s.replace("vcb-shell-0.19.3","vcb-shell-0.19.4").replace("vcb-shell-0.19.2","vcb-shell-0.19.4")
+          s=s.replace('/manifest.webmanifest?v=0.19.3','/manifest.webmanifest?v=0.19.4').replace('/manifest.webmanifest?v=0.19.2','/manifest.webmanifest?v=0.19.4')
+          s=s.replace('/icons/icon-192.png?v=0.19.3','/icons/icon-192.png?v=0.19.4').replace('/icons/icon-192.png?v=0.19.2','/icons/icon-192.png?v=0.19.4')
+          s=s.replace('/icons/icon-512.png?v=0.19.3','/icons/icon-512.png?v=0.19.4').replace('/icons/icon-512.png?v=0.19.2','/icons/icon-512.png?v=0.19.4')
+          if '/data/interaction_engine_v0194.js?v=0.19.4' not in s:
+            s=s.replace("'/data/interactions.js'","'/data/interactions.js','/data/interaction_engine_v0194.js?v=0.19.4'")
+          p.write_text(s,encoding='utf-8')
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git commit -m "v0.19.4 corregir comprobador de interacciones a seguridad de asociación"
+          git push

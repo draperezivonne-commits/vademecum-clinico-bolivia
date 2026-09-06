@@ -4,33 +4,16 @@
   "description": "Consulta clínica de medicamentos, insumos, implantes, proveedores, interacciones y dosis pediátrica en Bolivia.",
   "lang": "es-BO",
   "id": "/",
-  "start_url": "/?pwa=1",
+  "start_url": "/?pwa=1&v=0.19.3",
   "scope": "/",
   "display": "standalone",
-  "display_override": [
-    "standalone",
-    "minimal-ui"
-  ],
+  "display_override": ["standalone","minimal-ui"],
   "orientation": "any",
   "background_color": "#051c39",
   "theme_color": "#102742",
-  "categories": [
-    "medical",
-    "health",
-    "utilities"
-  ],
+  "categories": ["medical","health","utilities"],
   "icons": [
-    {
-      "src": "/icons/icon-192.png?v=0.19.2",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-512.png?v=0.19.2",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    {"src":"/icons/icon-192.png?v=0.19.3","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png?v=0.19.3","sizes":"512x512","type":"image/png","purpose":"any"}
   ]
 }

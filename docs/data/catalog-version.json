@@ -1,8 +1,8 @@
 {
   "version": "0.19.0",
-  "enrichmentVersion": "0.20.9",
+  "enrichmentVersion": "0.20.10",
   "appCompatibility": "0.19.x-0.20.x",
-  "appVersion": "0.20.9",
+  "appVersion": "0.20.10",
   "count": 2782,
   "verifiedBolivia": 2687,
   "publicVisible": 2683,
@@ -10,7 +10,7 @@
   "regulatoryExcluded": 4,
   "sha256": "7f5cddea7b87227142c323ccf628b7d0d43961109abea7e00894a68486346c35",
   "catalogUrl": "./catalogo_medicamentos_v0.19.0.json",
-  "updatedAt": "2026-09-06T19:50:00-04:00",
+  "updatedAt": "2026-09-06T19:58:00-04:00",
   "suppliesVisible": 135,
   "providersVisible": 18,
   "regulatoryAlerts": 3,
@@ -54,6 +54,11 @@
   "migraineAcuteTherapyExpanded": true,
   "migrainePreventionProductsExpanded": true,
   "migraineSearchAliasesExpanded": true,
+  "diclofenacPotassiumPatchVersion": "0.20.10",
+  "diclofenacPotassiumBoliviaVerified": true,
+  "diclofenacPotassiumProductsExpanded": true,
+  "naproxenPotassiumBoliviaVerified": false,
+  "naproxenPotassiumSearchClarification": true,
   "megaVitCatalogProducts": 54,
   "megaVitDistributorDirectory": true,
   "herbalSedativeExpansion": true,
@@ -72,5 +77,5 @@
   "fluoresceinNeurosurgerySupplyReported": true,
   "fluoresceinExactPresentationVerified": false,
   "bioFluoroOphthalmicSeparatedFromNeurosurgicalUse": true,
-  "notes": "v0.20.9: corrige Tolestan a Sumatriptán 85 mg + Naproxeno sódico 500 mg y amplía el catálogo de migraña en Bolivia. Incorpora o completa Sumigran, Sumax, Mitigar, Migradorixina, Migradol, Migra Dolalgial, Cofargot, Cofargot Forte, Galmigra, ergotamina+cafeína, Topictal, Fluxus, Sigestina y naproxeno solo (Calmitol N, Proxen y San Fernando). Mejora la búsqueda por migraña/triptán/naproxeno y añade reglas de seguridad para triptán+ergotamínico y dos triptanes dentro de 24 horas."
+  "notes": "v0.20.10: amplía diclofenaco potásico con productos verificados en Bolivia: Neoflogiatrin 100 (100 mg), Neoflogiatrin 75 (75 mg liberación sostenida), Cloflam 100 (100 mg), Diclosan Potásico (100 mg), además de Flamirex, Flogene, Flogene Retard, Flogene S.R., Vinil y asociaciones con diclofenaco potásico. No se incorporó naproxeno potásico como medicamento porque no se verificó esa sal en fuentes bolivianas; la búsqueda lo redirige a los productos documentados de naproxeno sódico con una advertencia explícita."
 }

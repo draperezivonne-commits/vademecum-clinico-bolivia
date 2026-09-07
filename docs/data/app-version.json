@@ -9,6 +9,6 @@
   "updatedAt": "2026-09-07",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "bdedfe80736c6526827091b8a9584c54fa33a0baa88694de544b8bbcfc0440cc",
+  "desktopSha256": "b4123bb67b96696adf370a8b9d6a59ef42a8ec8f3d20842e981eb55ee625f592",
   "notes": "v0.20.12: expansión global de la base de interacciones por clases farmacológicas, no limitada a anticonvulsivantes. Se amplían analgésicos/AINE, opioides y depresores del SNC, psicofármacos, cardiovascular, renal-electrolitos, anticoagulantes/antiagregantes, antibióticos/antifúngicos y otras familias. Añade alertas específicas para ketorolaco + cualquier AINE/aspirina, AINE + ISRS/IRSN, AINE + bloqueo SRAA/diuréticos, opioide + opioide, opioide + relajante muscular, benzodiacepina + gabapentinoide, tramadol + IMAO/triptanes/inductores CYP3A4, ahorradores de potasio + potasio, IECA + ARNI y otras. Las asociaciones comerciales se evalúan por ingredientes y las fuentes científicas permanecen visibles."
 }

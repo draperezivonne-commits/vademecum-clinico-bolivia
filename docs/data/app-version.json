@@ -1,14 +1,14 @@
 {
-  "latestVersion": "0.20.11",
+  "latestVersion": "0.20.12",
   "catalogVersion": "0.20.10",
-  "interactionVersion": "0.20.11",
-  "interactionUiVersion": "0.20.11",
-  "interactionAuditVersion": "0.20.11",
+  "interactionVersion": "0.20.12",
+  "interactionUiVersion": "0.20.12",
+  "interactionAuditVersion": "0.20.12",
   "interactionResolverVersion": "0.20.8",
   "interactionMigraineVersion": "0.20.9",
   "updatedAt": "2026-09-07",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "bdedfe80736c6526827091b8a9584c54fa33a0baa88694de544b8bbcfc0440cc",
-  "notes": "v0.20.11: ampliación mayor de la base de interacciones, con auditoría neurofarmacológica basada en DailyMed/FDA. Se añaden reglas verificadas para fenitoína+carbamazepina, fenitoína+amiodarona, valproato+lamotrigina, valproato+topiramato, valproato+fenitoína, valproato+carbamazepina, valproato+fenobarbital/primidona, lamotrigina+inductores enzimáticos, lamotrigina+anticonceptivos estrogénicos, carbamazepina+warfarina y otras interacciones relevantes. Las fuentes científicas vuelven a mostrarse en un desplegable."
+  "notes": "v0.20.12: expansión global de la base de interacciones por clases farmacológicas, no limitada a anticonvulsivantes. Se amplían analgésicos/AINE, opioides y depresores del SNC, psicofármacos, cardiovascular, renal-electrolitos, anticoagulantes/antiagregantes, antibióticos/antifúngicos y otras familias. Añade alertas específicas para ketorolaco + cualquier AINE/aspirina, AINE + ISRS/IRSN, AINE + bloqueo SRAA/diuréticos, opioide + opioide, opioide + relajante muscular, benzodiacepina + gabapentinoide, tramadol + IMAO/triptanes/inductores CYP3A4, ahorradores de potasio + potasio, IECA + ARNI y otras. Las asociaciones comerciales se evalúan por ingredientes y las fuentes científicas permanecen visibles."
 }

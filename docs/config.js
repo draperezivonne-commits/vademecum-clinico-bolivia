@@ -1,7 +1,7 @@
 window.VCB_CONFIG={
-  appVersion:'0.20.9',
+  appVersion:'0.20.10',
   bundledCatalogVersion:'0.19.0',
-  catalogEnrichmentVersion:'0.20.9',
+  catalogEnrichmentVersion:'0.20.10',
   interactionVersion:'0.20.9',
   interactionUiVersion:'0.20.8',
   interactionExactRules:66,

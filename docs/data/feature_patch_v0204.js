@@ -1,4 +1,4 @@
-/* Vademécum Clínico Bolivia · compatibilidad acumulativa v0.20.4 → v0.20.10 */
+/* Vademécum Clínico Bolivia · compatibilidad acumulativa v0.20.4 → v0.20.11 */
 (function(){
   const supplies=window.VCB_SUPPLIES||[];
   if(!supplies.some(x=>x.id==='VCB0204-GELFOAM-PFIZER')) supplies.push({
@@ -8,14 +8,15 @@
   const previousRender=window.renderCategories;
   if(typeof previousRender==='function'){window.renderCategories=function(tab='especialidades'){if(tab==='transversales')tab='especialidades';return previousRender(tab)};try{renderCategories=window.renderCategories}catch(_e){}document.querySelectorAll('.cat-tab').forEach(b=>b.onclick=()=>window.renderCategories(b.dataset.cat));}
   const aboutP=document.querySelector('#sincronizacion .about-card p');
-  if(aboutP)aboutP.innerHTML='<b>Aplicación 0.20.10 · catálogo base 0.19.0 + ampliaciones farmacológicas 0.20.10 · interacciones 0.20.9 · filtro público Bolivia activo.</b> Se amplió diclofenaco potásico con productos verificados en Bolivia. La consulta “naproxeno potásico” muestra una aclaración porque no se verificó esa sal en el mercado boliviano; las presentaciones confirmadas corresponden a naproxeno sódico.';
-  function load0208ui(){if(document.querySelector('script[data-vcb0208ui]'))return;const s=document.createElement('script');s.src='./data/interaction_ui_v0208.js?v=0.20.10';s.dataset.vcb0208ui='1';document.body.appendChild(s)}
-  function loadResolver(){if(document.querySelector('script[data-vcb0208resolver]')){load0208ui();return}const s=document.createElement('script');s.src='./data/interaction_resolver_v0208.js?v=0.20.10';s.dataset.vcb0208resolver='1';s.onload=load0208ui;document.body.appendChild(s)}
-  function load02010catalog(){if(document.querySelector('script[data-vcb02010catalog]')){loadResolver();return}const s=document.createElement('script');s.src='./data/catalog_patch_v02010.js?v=0.20.10';s.dataset.vcb02010catalog='1';s.onload=loadResolver;document.body.appendChild(s)}
-  function loadMigraine(){if(document.querySelector('script[data-vcb0209migraine]')){load02010catalog();return}const s=document.createElement('script');s.src='./data/interaction_migraine_v0209.js?v=0.20.10';s.dataset.vcb0209migraine='1';s.onload=load02010catalog;document.body.appendChild(s)}
-  function load0208audit(){if(document.querySelector('script[data-vcb0208audit]')){loadMigraine();return}const s=document.createElement('script');s.src='./data/interaction_audit_v0208.js?v=0.20.10';s.dataset.vcb0208audit='1';s.onload=loadMigraine;document.body.appendChild(s)}
-  function load0207(){if(document.querySelector('script[data-vcb0207]')){load0208audit();return}const s7=document.createElement('script');s7.src='./data/interaction_ui_v0207.js?v=0.20.10';s7.dataset.vcb0207='1';s7.onload=load0208audit;document.body.appendChild(s7)}
-  function load0206(){if(document.querySelector('script[data-vcb0206]')){load0207();return}const s6=document.createElement('script');s6.src='./data/feature_patch_v0206.js?v=0.20.10';s6.dataset.vcb0206='1';s6.onload=load0207;document.body.appendChild(s6)}
-  const existing5=document.querySelector('script[data-vcb0205]');if(!existing5){const s5=document.createElement('script');s5.src='./data/feature_patch_v0205.js?v=0.20.10';s5.dataset.vcb0205='1';s5.onload=load0206;document.body.appendChild(s5)}else{load0206()}
-  window.VCB_FEATURE_PATCH_VERSION='0.20.10';
+  if(aboutP)aboutP.innerHTML='<b>Aplicación 0.20.11 · catálogo base 0.19.0 + ampliaciones farmacológicas 0.20.10 · interacciones 0.20.11 · filtro público Bolivia activo.</b> Se amplió y auditó la base de interacciones con foco neurofarmacológico y cardiovascular relevante: fenitoína, carbamazepina, valproato, lamotrigina, topiramato, fenobarbital/primidona, amiodarona, warfarina y anticoncepción hormonal. Las reglas nuevas incluyen fuente científica verificable.';
+  function load0208ui(){if(document.querySelector('script[data-vcb0208ui]'))return;const s=document.createElement('script');s.src='./data/interaction_ui_v0208.js?v=0.20.11';s.dataset.vcb0208ui='1';document.body.appendChild(s)}
+  function loadResolver(){if(document.querySelector('script[data-vcb0208resolver]')){load0208ui();return}const s=document.createElement('script');s.src='./data/interaction_resolver_v0208.js?v=0.20.11';s.dataset.vcb0208resolver='1';s.onload=load0208ui;document.body.appendChild(s)}
+  function load02011neuro(){if(document.querySelector('script[data-vcb02011neuro]')){loadResolver();return}const s=document.createElement('script');s.src='./data/interaction_neuro_v02011.js?v=0.20.11';s.dataset.vcb02011neuro='1';s.onload=loadResolver;document.body.appendChild(s)}
+  function load02010catalog(){if(document.querySelector('script[data-vcb02010catalog]')){load02011neuro();return}const s=document.createElement('script');s.src='./data/catalog_patch_v02010.js?v=0.20.11';s.dataset.vcb02010catalog='1';s.onload=load02011neuro;document.body.appendChild(s)}
+  function loadMigraine(){if(document.querySelector('script[data-vcb0209migraine]')){load02010catalog();return}const s=document.createElement('script');s.src='./data/interaction_migraine_v0209.js?v=0.20.11';s.dataset.vcb0209migraine='1';s.onload=load02010catalog;document.body.appendChild(s)}
+  function load0208audit(){if(document.querySelector('script[data-vcb0208audit]')){loadMigraine();return}const s=document.createElement('script');s.src='./data/interaction_audit_v0208.js?v=0.20.11';s.dataset.vcb0208audit='1';s.onload=loadMigraine;document.body.appendChild(s)}
+  function load0207(){if(document.querySelector('script[data-vcb0207]')){load0208audit();return}const s7=document.createElement('script');s7.src='./data/interaction_ui_v0207.js?v=0.20.11';s7.dataset.vcb0207='1';s7.onload=load0208audit;document.body.appendChild(s7)}
+  function load0206(){if(document.querySelector('script[data-vcb0206]')){load0207();return}const s6=document.createElement('script');s6.src='./data/feature_patch_v0206.js?v=0.20.11';s6.dataset.vcb0206='1';s6.onload=load0207;document.body.appendChild(s6)}
+  const existing5=document.querySelector('script[data-vcb0205]');if(!existing5){const s5=document.createElement('script');s5.src='./data/feature_patch_v0205.js?v=0.20.11';s5.dataset.vcb0205='1';s5.onload=load0206;document.body.appendChild(s5)}else{load0206()}
+  window.VCB_FEATURE_PATCH_VERSION='0.20.11';
 })();

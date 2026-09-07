@@ -1,4 +1,4 @@
-/* Vademécum Clínico Bolivia v0.20.12 · seguridad de presentación de interacciones */
+/* Vademécum Clínico Bolivia v0.20.13 · seguridad de presentación de interacciones */
 (function(){
   const previous=window.renderInteractionsMulti;
   if(typeof previous!=='function')return;
@@ -13,7 +13,7 @@
       const p=result.querySelector('p');if(p)p.textContent='No se encontró una interacción clínicamente relevante en las reglas actualmente verificadas. Esto no equivale a declarar que la combinación sea segura en todos los pacientes.';
     }
     const note=el.querySelector('.v207-note');
-    if(note)note.innerHTML='<b>Importante:</b> el resultado se refiere únicamente a los medicamentos escritos. Los productos asociados se evalúan por cada ingrediente identificado. La base v0.20.12 amplía reglas por clases farmacológicas, pero si no existe una regla verificada se informa “sin interacción detectada”, nunca “seguro”. Pueden influir dosis, edad, embarazo, función renal/hepática, QT, electrolitos y otras condiciones clínicas. Las fuentes científicas de las alertas detectadas pueden abrirse en el desplegable inferior.';
+    if(note)note.innerHTML='<b>Importante:</b> el resultado se refiere únicamente a los medicamentos escritos. Los productos asociados se evalúan por cada ingrediente identificado. La base v0.20.13 amplía reglas por clases farmacológicas y utiliza etiquetas FDA/DailyMed/openFDA como apoyo de auditoría; si no existe una regla verificada se informa “sin interacción detectada”, nunca “seguro”. Pueden influir dosis, edad, embarazo, función renal/hepática, QT, electrolitos y otras condiciones clínicas. Las fuentes científicas de las alertas detectadas pueden abrirse en el desplegable inferior.';
   }
   window.renderInteractionsMulti=render;
   const btn=document.querySelector('#btnInteraccion');if(btn)btn.onclick=render;
@@ -25,6 +25,7 @@
     if(banner)banner.innerHTML='<b>Resultado clínico directo:</b> NO COMBINAR · EVITAR · MONITORIZAR · SIN INTERACCIÓN RELEVANTE DETECTADA. La ausencia de una regla no se presenta como “seguro”. Las alertas detectadas incluyen acceso a su fuente científica.';
   }
   const about=document.querySelector('#sincronizacion .about-card p b');
-  if(about)about.innerHTML=about.innerHTML.replace(/Aplicación\s+0\.20\.\d+/,'Aplicación 0.20.12');
-  window.VCB_INTERACTION_UI_VERSION='0.20.12';
+  const current=window.VCB_CONFIG?.appVersion||'0.20.13';
+  if(about)about.innerHTML=about.innerHTML.replace(/Aplicación\s+0\.20\.\d+/,`Aplicación ${current}`);
+  window.VCB_INTERACTION_UI_VERSION='0.20.13';
 })();

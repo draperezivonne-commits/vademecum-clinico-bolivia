@@ -1,14 +1,14 @@
 {
-  "latestVersion": "0.20.10",
+  "latestVersion": "0.20.11",
   "catalogVersion": "0.20.10",
-  "interactionVersion": "0.20.9",
-  "interactionUiVersion": "0.20.8",
-  "interactionAuditVersion": "0.20.8",
+  "interactionVersion": "0.20.11",
+  "interactionUiVersion": "0.20.11",
+  "interactionAuditVersion": "0.20.11",
   "interactionResolverVersion": "0.20.8",
   "interactionMigraineVersion": "0.20.9",
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-09-07",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "0ec64b1af68763b41cad95c83b43e64ede4a4a66a01d7e6c5ce1d65ee0469623",
-  "notes": "v0.20.10: amplía diclofenaco potásico con productos verificados en Bolivia, incluyendo Neoflogiatrin 100 y 75, Cloflam 100 y Diclosan Potásico, además de otras presentaciones y asociaciones listadas localmente. La búsqueda de 'naproxeno potásico' muestra una aclaración: no se verificó esa sal como presentación comercial en Bolivia y se muestran las presentaciones documentadas de naproxeno sódico."
+  "desktopSha256": "",
+  "notes": "v0.20.11: ampliación mayor de la base de interacciones, con auditoría neurofarmacológica basada en DailyMed/FDA. Se añaden reglas verificadas para fenitoína+carbamazepina, fenitoína+amiodarona, valproato+lamotrigina, valproato+topiramato, valproato+fenitoína, valproato+carbamazepina, valproato+fenobarbital/primidona, lamotrigina+inductores enzimáticos, lamotrigina+anticonceptivos estrogénicos, carbamazepina+warfarina y otras interacciones relevantes. Las fuentes científicas vuelven a mostrarse en un desplegable."
 }

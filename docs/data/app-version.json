@@ -1,14 +1,15 @@
 {
-  "latestVersion": "0.20.12",
+  "latestVersion": "0.20.13",
   "catalogVersion": "0.20.10",
-  "interactionVersion": "0.20.12",
-  "interactionUiVersion": "0.20.12",
-  "interactionAuditVersion": "0.20.12",
+  "interactionVersion": "0.20.13",
+  "interactionUiVersion": "0.20.13",
+  "interactionAuditVersion": "0.20.13",
   "interactionResolverVersion": "0.20.8",
   "interactionMigraineVersion": "0.20.9",
+  "interactionOpenFdaAuditVersion": "0.20.13",
   "updatedAt": "2026-09-07",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "8ff8d2c29563c04e91139f77ed3c70a9df33e6e140562c052e5c2a1c04d0108a",
-  "notes": "v0.20.12: expansión global de la base de interacciones por clases farmacológicas, no limitada a anticonvulsivantes. Se amplían analgésicos/AINE, opioides y depresores del SNC, psicofármacos, cardiovascular, renal-electrolitos, anticoagulantes/antiagregantes, antibióticos/antifúngicos y otras familias. Añade alertas específicas para ketorolaco + cualquier AINE/aspirina, AINE + ISRS/IRSN, AINE + bloqueo SRAA/diuréticos, opioide + opioide, opioide + relajante muscular, benzodiacepina + gabapentinoide, tramadol + IMAO/triptanes/inductores CYP3A4, ahorradores de potasio + potasio, IECA + ARNI y otras. Las asociaciones comerciales se evalúan por ingredientes y las fuentes científicas permanecen visibles."
+  "notes": "v0.20.13: nueva ampliación global de interacciones con auditoría FDA/DailyMed/openFDA. Refuerza metoclopramida + antiparkinsonianos dopaminérgicos, pseudoefedrina + IMAO/MAO-B/beta-bloqueantes/digoxina, cafeína + pseudoefedrina y otros simpaticomiméticos, antiagregantes + AINE, aspirina + ibuprofeno, P2Y12 + opioides, ticagrelor + CYP3A/digoxina y ciprofloxacino + cafeína/clozapina/duloxetina/zolpidem/sildenafilo/AINE. openFDA se usa como fuente de candidatos para revisión humana; ninguna regla se publica automáticamente sin validación clínica."
 }

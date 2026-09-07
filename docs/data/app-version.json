@@ -9,6 +9,6 @@
   "updatedAt": "2026-09-06",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "bc1f60ca3c68382d89b10cd9446d158775479be379edf8569e8a9381afa2c6b4",
+  "desktopSha256": "0ec64b1af68763b41cad95c83b43e64ede4a4a66a01d7e6c5ce1d65ee0469623",
   "notes": "v0.20.10: amplía diclofenaco potásico con productos verificados en Bolivia, incluyendo Neoflogiatrin 100 y 75, Cloflam 100 y Diclosan Potásico, además de otras presentaciones y asociaciones listadas localmente. La búsqueda de 'naproxeno potásico' muestra una aclaración: no se verificó esa sal como presentación comercial en Bolivia y se muestran las presentaciones documentadas de naproxeno sódico."
 }

@@ -1,4 +1,4 @@
-name: Validar interacciones v0.20.0
+name: Validar aplicación e interacciones
 
 on:
   push:
@@ -7,6 +7,10 @@ on:
       - 'docs/data/interaction_kb_v0200.js'
       - 'docs/data/interaction_engine_v0200.js'
       - 'docs/data/interaction_sources_v0200.json'
+      - 'docs/data/interaction_*.js'
+      - 'docs/data/catalog_patch_*.js'
+      - 'docs/data/app-version.json'
+      - 'docs/data/catalog-version.json'
       - 'docs/index.html'
       - 'docs/config.js'
       - 'docs/sw.js'
@@ -27,10 +31,12 @@ jobs:
         run: |
           node --check docs/data/interaction_kb_v0200.js
           node --check docs/data/interaction_engine_v0200.js
+          node --check docs/data/catalog_patch_v02014.js
+          node --check docs/data/feature_patch_v0204.js
           node --check docs/sw.js
           node --check docs/config.js
 
-      - name: Validar estructura y conteos de la base
+      - name: Validar base histórica de interacciones
         run: |
           node <<'NODE'
           const fs=require('fs'),vm=require('vm');
@@ -42,10 +48,10 @@ jobs:
           if(!k) throw new Error('VCB_INTERACTION_KB no se creó');
           const sourceCount=Object.keys(k.sources||{}).length;
           const groupCount=Object.keys(k.groups||{}).length;
-          if(sourceCount!==19) throw new Error(`Fuentes: ${sourceCount}, esperado 19`);
-          if(groupCount!==65) throw new Error(`Grupos: ${groupCount}, esperado 65`);
-          if((k.class_rules||[]).length!==59) throw new Error(`Reglas clase: ${k.class_rules.length}, esperado 59`);
-          if((k.exact_rules||[]).length!==64) throw new Error(`Reglas exactas: ${k.exact_rules.length}, esperado 64`);
+          if(sourceCount!==19) throw new Error(`Fuentes base: ${sourceCount}, esperado 19`);
+          if(groupCount!==65) throw new Error(`Grupos base: ${groupCount}, esperado 65`);
+          if((k.class_rules||[]).length!==59) throw new Error(`Reglas clase base: ${k.class_rules.length}, esperado 59`);
+          if((k.exact_rules||[]).length!==64) throw new Error(`Reglas exactas base: ${k.exact_rules.length}, esperado 64`);
           const ex=(a,b)=>k.exact_rules.find(r=>(r.a===a&&r.b===b)||(r.a===b&&r.b===a));
           if(!ex('Ciprofloxacino','Tizanidina')?.nivel.toLowerCase().includes('contra')) throw new Error('Falta ciprofloxacino+tizanidina contraindicada');
           if(!ex('Allopurinol','Azatioprina')) throw new Error('Falta allopurinol+azatioprina');
@@ -55,17 +61,35 @@ jobs:
             if(!cl(...pair)) throw new Error('Falta regla de clase '+pair.join('+'));
           }
           const src=JSON.parse(fs.readFileSync('docs/data/interaction_sources_v0200.json','utf8'));
-          if(src.version!=='0.20.0'||Object.keys(src.sources||{}).length!==19) throw new Error('Inventario de fuentes inconsistente');
+          if(src.version!=='0.20.0'||Object.keys(src.sources||{}).length!==19) throw new Error('Inventario de fuentes base inconsistente');
           console.log({sourceCount,groupCount,classRules:k.class_rules.length,exactRules:k.exact_rules.length});
           NODE
 
-      - name: Validar activación en PWA
+      - name: Validar activación y versiones PWA
         run: |
-          grep -q 'interaction_kb_v0200.js?v=0.20.0' docs/index.html
-          grep -q 'interaction_engine_v0200.js?v=0.20.0' docs/index.html
-          if grep -q 'interaction_engine_v0194.js' docs/index.html; then echo 'Motor v0.19.4 todavía activo' && exit 1; fi
-          grep -q "appVersion:'0.20.0'" docs/config.js
-          grep -q "vcb-shell-0.20.0" docs/sw.js
-          grep -q 'interaction_kb_v0200.js?v=0.20.0' docs/sw.js
-          grep -q 'interaction_engine_v0200.js?v=0.20.0' docs/sw.js
-          grep -q 'v=0.20.0' docs/manifest.webmanifest
+          node <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const configCode=fs.readFileSync('docs/config.js','utf8');
+          const sandbox={window:{}};
+          vm.createContext(sandbox);
+          vm.runInContext(configCode,sandbox);
+          const cfg=sandbox.window.VCB_CONFIG;
+          if(!cfg?.appVersion) throw new Error('appVersion ausente en config.js');
+          const app=JSON.parse(fs.readFileSync('docs/data/app-version.json','utf8'));
+          const cat=JSON.parse(fs.readFileSync('docs/data/catalog-version.json','utf8'));
+          if(app.latestVersion!==cfg.appVersion) throw new Error(`app-version.json=${app.latestVersion} y config.js=${cfg.appVersion}`);
+          if(cat.appVersion!==cfg.appVersion) throw new Error(`catalog-version.json appVersion=${cat.appVersion} y config.js=${cfg.appVersion}`);
+          const sw=fs.readFileSync('docs/sw.js','utf8');
+          if(!sw.includes(`vcb-shell-${cfg.appVersion}`)) throw new Error('CACHE_NAME no coincide con appVersion');
+          const index=fs.readFileSync('docs/index.html','utf8');
+          if(!index.includes('interaction_kb_v0200.js?v=0.20.0')) throw new Error('Base histórica de interacciones no está cargada en index');
+          if(!index.includes('interaction_engine_v0200.js?v=0.20.0')) throw new Error('Motor histórico de interacciones no está cargado en index');
+          if(index.includes('interaction_engine_v0194.js')) throw new Error('Motor v0.19.4 todavía activo');
+          if(!sw.includes('interaction_kb_v0200.js?v=0.20.0')) throw new Error('Base de interacciones no está precacheada');
+          if(!sw.includes('interaction_engine_v0200.js?v=0.20.0')) throw new Error('Motor de interacciones no está precacheado');
+          if(cfg.catalogEnrichmentVersion==='0.20.14'){
+            if(!index.includes('feature_patch_v0204.js?v=0.20.14')) throw new Error('index no carga la cadena v0.20.14');
+            if(!sw.includes('catalog_patch_v02014.js?v=0.20.14')) throw new Error('PWA no precachea catalog_patch_v02014');
+          }
+          console.log({appVersion:cfg.appVersion,catalogEnrichmentVersion:cfg.catalogEnrichmentVersion,interactionVersion:cfg.interactionVersion});
+          NODE

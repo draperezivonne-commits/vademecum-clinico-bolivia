@@ -1,8 +1,8 @@
 {
   "version": "0.19.0",
-  "enrichmentVersion": "0.20.14",
+  "enrichmentVersion": "0.20.15",
   "appCompatibility": "0.19.x-0.20.x",
-  "appVersion": "0.20.14",
+  "appVersion": "0.20.15",
   "count": 2782,
   "verifiedBolivia": 2687,
   "publicVisible": 2683,
@@ -10,7 +10,7 @@
   "regulatoryExcluded": 4,
   "sha256": "7f5cddea7b87227142c323ccf628b7d0d43961109abea7e00894a68486346c35",
   "catalogUrl": "./catalogo_medicamentos_v0.19.0.json",
-  "updatedAt": "2026-10-05T22:07:00-04:00",
+  "updatedAt": "2026-10-05T23:33:00-04:00",
   "suppliesVisible": 137,
   "providersVisible": 19,
   "regulatoryAlerts": 3,
@@ -128,7 +128,7 @@
   "fluoresceinNeurosurgerySupplyReported": true,
   "fluoresceinExactPresentationVerified": false,
   "bioFluoroOphthalmicSeparatedFromNeurosurgicalUse": true,
-  "notes": "v0.20.14: ampliación farmacológica y de insumos. Se incorpora citicolina genérica con presentaciones bolivianas verificadas y se amplían Fortinil, Somazina y Recelne. Se añade DMO S.R.L. al directorio de proveedores y el Sistema de Columna M10 (Waston Medical Appliance / Master 10) en Cirugía de columna. Nopiram queda visible como marca reportada en Bolivia, pero composición, laboratorio y presentaciones exactas permanecen pendientes de respaldo documental para no inventar datos.",
+  "notes": "v0.20.15: se corrige NOOPIRAM. Marca de Sigma Corp, principio activo piracetam, distribuido en Bolivia por Biofarma. Presentaciones verificadas: comprimidos recubiertos 1200 mg caja x24; solución inyectable 1 g/5 mL caja x6 ampollas; solución oral 20 g/100 mL frasco 100 mL. Se conservan las ampliaciones previas de citicolina y DMO Sistema de Columna M10.",
   "catalogPatchV02014": true,
   "citicolinaExpanded": true,
   "citicolinaBoliviaPresentationsVerified": true,
@@ -137,11 +137,21 @@
     "Somazina",
     "Recelne"
   ],
-  "nopiramVisible": true,
-  "nopiramDetailsVerified": false,
-  "nopiramPendingDocumentaryVerification": true,
+  "nopiramVisible": false,
   "dmoProviderAdded": true,
   "dmoM10Added": true,
   "dmoM10Manufacturer": "Changzhou Waston Medical Appliance Co., Ltd.",
-  "dmoM10BoliviaProvider": "DMO S.R.L."
+  "dmoM10BoliviaProvider": "DMO S.R.L.",
+  "noopiramVisible": true,
+  "noopiramDetailsVerified": true,
+  "noopiramBrand": "NOOPIRAM",
+  "noopiramActiveIngredient": "Piracetam",
+  "noopiramLaboratory": "Sigma Corp",
+  "noopiramDistributor": "Biofarma",
+  "noopiramPresentations": [
+    "Piracetam 1200 mg · comprimidos recubiertos · caja x24",
+    "Piracetam 1 g/5 mL · solución inyectable · caja x6 ampollas",
+    "Piracetam 20 g/100 mL · solución oral · frasco 100 mL"
+  ],
+  "catalogPatchV02015": true
 }

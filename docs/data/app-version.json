@@ -10,6 +10,6 @@
   "updatedAt": "2026-10-05",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "87e6a4ecd2396aa6a46c60096ebda92dda91d9135fc4e597b988cf8f022907c2",
+  "desktopSha256": "bdf72038fb43e59cb68520d7e174f0e32db62ac9f6fcd9f6d574f962a75ed623",
   "notes": "v0.20.14: se amplía el Vademécum con citicolina y presentaciones verificadas en Bolivia (Fortinil, Somazina y Recelne), se incorpora DMO S.R.L. como proveedor y el Sistema de Columna M10 / Master 10 de Waston Medical Appliance en Cirugía de columna. Nopiram permanece visible como marca reportada, pero sin inventar principio activo, laboratorio ni dosis mientras se obtiene respaldo documental de sus presentaciones."
 }

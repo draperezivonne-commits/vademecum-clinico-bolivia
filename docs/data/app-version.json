@@ -1,6 +1,6 @@
 {
-  "latestVersion": "0.20.14",
-  "catalogVersion": "0.20.14",
+  "latestVersion": "0.20.15",
+  "catalogVersion": "0.20.15",
   "interactionVersion": "0.20.13",
   "interactionUiVersion": "0.20.13",
   "interactionAuditVersion": "0.20.13",
@@ -11,5 +11,5 @@
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "bdf72038fb43e59cb68520d7e174f0e32db62ac9f6fcd9f6d574f962a75ed623",
-  "notes": "v0.20.14: se amplía el Vademécum con citicolina y presentaciones verificadas en Bolivia (Fortinil, Somazina y Recelne), se incorpora DMO S.R.L. como proveedor y el Sistema de Columna M10 / Master 10 de Waston Medical Appliance en Cirugía de columna. Nopiram permanece visible como marca reportada, pero sin inventar principio activo, laboratorio ni dosis mientras se obtiene respaldo documental de sus presentaciones."
+  "notes": "v0.20.15: corrección de NOOPIRAM. Principio activo piracetam, laboratorio Sigma Corp, distribuido por Biofarma. Presentaciones verificadas: comprimidos recubiertos 1200 mg caja x24, solución inyectable 1 g/5 mL caja x6 ampollas y solución oral 20 g/100 mL frasco 100 mL. Se mantienen citicolina y DMO Sistema de Columna M10 de la versión anterior."
 }

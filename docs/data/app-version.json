@@ -10,7 +10,7 @@
   "updatedAt": "2026-10-15",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
-  "desktopSha256": "1c1f22bcfd03917ef326f923dad91054e16d78b43451be284f5fa1f76b9693f9",
+  "desktopSha256": "e29dc169aa45e1f70991081edf46faebf2031b570a765526308ed94fda23fc9c",
   "notes": "v0.20.16: se incorpora ALERTEX (modafinilo Saval 100 y 200 mg) y se amplía la base de interacciones de ALERTEX/modafinilo y NOOPIRAM/piracetam. Incluye modafinilo con fenitoína, carbamazepina, fenobarbital, antihipertensivos, estimulantes, warfarina, ciclosporina, diazepam, propranolol, omeprazol, clomipramina, midazolam, triazolam, quetiapina, haloperidol y clopidogrel; y piracetam con antiagregantes, anticoagulantes, AINE, carbamazepina/fenitoína/fenobarbital/valproato, hormonas tiroideas, haloperidol y modafinilo. Se distinguen interacciones confirmadas de inferencias mecanísticas/evidencia limitada.",
   "validationVersion": "0.20.16",
   "validationStatus": "passed"

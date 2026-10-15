@@ -1,15 +1,15 @@
 {
-  "latestVersion": "0.20.15",
-  "catalogVersion": "0.20.15",
-  "interactionVersion": "0.20.13",
+  "latestVersion": "0.20.16",
+  "catalogVersion": "0.20.16",
+  "interactionVersion": "0.20.16",
   "interactionUiVersion": "0.20.13",
-  "interactionAuditVersion": "0.20.13",
+  "interactionAuditVersion": "0.20.16",
   "interactionResolverVersion": "0.20.8",
   "interactionMigraineVersion": "0.20.9",
   "interactionOpenFdaAuditVersion": "0.20.13",
-  "updatedAt": "2026-10-05",
+  "updatedAt": "2026-10-15",
   "requiresInternetForUpdate": true,
   "desktopDownloadUrl": "https://vademecum.neurocapsulas.com/downloads/Vademecum_Clinico_Bolivia_latest.exe",
   "desktopSha256": "1c1f22bcfd03917ef326f923dad91054e16d78b43451be284f5fa1f76b9693f9",
-  "notes": "v0.20.15: corrección de NOOPIRAM. Principio activo piracetam, laboratorio Sigma Corp, distribuido por Biofarma. Presentaciones verificadas: comprimidos recubiertos 1200 mg caja x24, solución inyectable 1 g/5 mL caja x6 ampollas y solución oral 20 g/100 mL frasco 100 mL. Se mantienen citicolina y DMO Sistema de Columna M10 de la versión anterior."
+  "notes": "v0.20.16: se incorpora ALERTEX (modafinilo Saval 100 y 200 mg) y se amplía la base de interacciones de ALERTEX/modafinilo y NOOPIRAM/piracetam. Incluye modafinilo con fenitoína, carbamazepina, fenobarbital, antihipertensivos, estimulantes, warfarina, ciclosporina, diazepam, propranolol, omeprazol, clomipramina, midazolam, triazolam, quetiapina, haloperidol y clopidogrel; y piracetam con antiagregantes, anticoagulantes, AINE, carbamazepina/fenitoína/fenobarbital/valproato, hormonas tiroideas, haloperidol y modafinilo. Se distinguen interacciones confirmadas de inferencias mecanísticas/evidencia limitada."
 }
